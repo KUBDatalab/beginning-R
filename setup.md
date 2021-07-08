@@ -105,7 +105,7 @@ recommend if you have any problems installing R and RStudio on your personal com
   error messages.
 
 
-### For everyone
+### For all
 
 **After installing R and RStudio, you need to install the `tidyverse` package.**
 
@@ -120,3 +120,6 @@ from `R`:
 download.file("https://ndownloader.figshare.com/files/11492171",
               "data/SAFI_clean.csv", mode = "wb")
 ```
+
+If you have chosen the online version at [Rstudio Cloud](https://rstudio.cloud/) you will have 
+to begin a new project (Click "New Project") before you can run the code above.
