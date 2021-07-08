@@ -19,6 +19,18 @@ see the [**`tidyverse`** website](https://tidyverse.tidyverse.org) for more deta
 Follow the instructions below for your operating system, and then follow the 
 instructions to install **`tidyverse`**.
 
+### Online
+
+Rather than installing R and RStudio on your personal computer, 
+[Rstudio Cloud](https://rstudio.cloud/) offers a free, online alternative,
+where you will be able to run R and RStudio in your browser. 
+Sign up with your Google/Gmail account if you have one, or with any other email.
+
+The free version of RStudio Cloud places limitations on the number of projects you
+can work on, and the amount of memory and processing power you can access. For the 
+purposes of following these lessons, RStudio Cloud is perfectly adequate, and what we
+recommend if you have any problems installing R and RStudio on your personal computer.
+
 ### Windows
 
 #### If you already have R and RStudio installed
