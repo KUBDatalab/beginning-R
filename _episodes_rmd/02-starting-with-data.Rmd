@@ -112,7 +112,7 @@ Also, if you recall, the missing data is encoded as "NULL" in the dataset.
 We'll tell it to the function, so R will automatically convert all the "NULL"
 entries in the dataset into `NA`.
 
-```{r, eval = TRUE,  message = FALSE, purl = FALSE}
+```{r, eval = TRUE,  message = FALSE, purl = FALSE, echo = FALSE}
 library(tidyverse)
 library(here)
 

@@ -111,13 +111,6 @@ We'll tell it to the function, so R will automatically convert all the "NULL"
 entries in the dataset into `NA`.
 
 
-~~~
-library(tidyverse)
-library(here)
-
-interviews <- read_csv("../data/SAFI_clean.csv", na = "NULL")
-~~~
-{: .language-r}
 
 The specific path we are using here is dependent on the specific setup. If you have 
 followed the recommendations for structuring your project-folder, it should be 
