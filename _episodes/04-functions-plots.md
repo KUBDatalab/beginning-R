@@ -5,22 +5,22 @@ title: "A couple of plots. And making our own functions"
 teaching: 80
 exercises: 35
 questions:
-  - "What are the components of a ggplot?"
   - "How do I create scatterplots, boxplots, and barplots?"
-  - "How can I change the aesthetics (ex. colour, transparency) of my plot?"
-  - "How can I create multiple plots at once?"
+  - "How can I define my own functions?"
+  
 objectives:
    - "Produce scatter plots and boxplots using Base R."
    - "Write your own function"
    - "Write loops to repeat calculations"
    - "Use logical tests in loops"
+   
 keypoints:
-   - "`ggplot2` is a flexible and useful tool for creating plots in R."
-   - "The data set and coordinate system can be defined using the `ggplot` function."
-   - "Additional layers, including geoms, are added using the `+` operator."
    - "Boxplots are useful for visualizing the distribution of a continuous variable."
    - "Barplots are useful for visualizing categorical data."
-   - "Faceting allows you to generate multiple plots based on a categorical variable."
+   - "Functions allows you to repeat the same set of operations again and again."
+   - "Loops allows you to apply the same function to lots of data."
+   - "Logical tests allow you to apply different calculations on different sets of data."
+   
 source: Rmd
 ---
 
@@ -99,80 +99,6 @@ interviews_plotting <- interviews %>%
 ~~~
 {: .language-r}
 
-## Plotting with **`ggplot2`**
-
-**`ggplot2`** is a plotting package that makes it simple to create complex plots
-from data stored in a data frame. It provides a programmatic interface for
-specifying what variables to plot, how they are displayed, and general visual
-properties. Therefore, we only need minimal changes if the underlying data
-change or if we decide to change from a bar plot to a scatterplot. This helps in
-creating publication quality plots with minimal amounts of adjustments and
-tweaking.
-
-**`ggplot2`** functions work best with data in the 'long' format, i.e., a column for every
-dimension, and a row for every observation. Well-structured data will save you
-lots of time when making figures with **`ggplot2`**
-
-ggplot graphics are built step by step by adding new elements. Adding layers in
-this fashion allows for extensive flexibility and customization of plots.
-
-Each chart built with ggplot2 must include the following
-
-* Data  
-* Aesthetic mapping (aes)  
-
-  + Describes how variables are mapped onto graphical attributes  
-  + Visual attribute of data including x-y axes, color, fill, shape, and alpha  
-* Geometric objects (geom)  
-
-  + Determines how values are rendered graphically, as bars (`geom_bar`), scatterplot (`geom_point`), line (`geom_line`), etc. 
-
-Thus, the template for graphic in ggplot2 is:
-
-```
-<DATA> %>%
-    ggplot(aes(<MAPPINGS>)) +
-    <GEOM_FUNCTION>()
-```
-Remember from the last lesson that the pipe operator `%>%` places the result of the previous line(s) into the first argument of the function. **`ggplot`** is a function that expects a data frame to be the first argument. This allows for us to change from specifying the `data =` argument within the `ggplot` function and instead pipe the data into the function.
-
-- use the `ggplot()` function and bind the plot to a specific data frame.
-
-
-~~~
-interviews_plotting %>%
-    ggplot()
-~~~
-{: .language-r}
-
-- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.
-
-
-~~~
-interviews_plotting %>%
-    ggplot(aes(x = no_membrs, y = number_items))
-~~~
-{: .language-r}
-
-- add 'geoms' – graphical representations of the data in the plot (points,
-lines, bars). **`ggplot2`** offers many different geoms; we will use some
-common ones today, including:
-
-	* `geom_point()` for scatter plots, dot plots, etc.
-	* `geom_boxplot()` for, well, boxplots!
-	* `geom_line()` for trend lines, time series, etc.
-
-To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use `geom_point()` first:
-
-
-~~~
-interviews_plotting %>%
-    ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_point()
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-first-ggplot-1.png" title="plot of chunk first-ggplot" alt="plot of chunk first-ggplot" width="612" style="display: block; margin: auto;" />
 
 plot working?
 
@@ -284,80 +210,6 @@ taking the overplotted graph and giving it a tiny shake. The points will move a
 little bit side-to-side and up-and-down, but their position from the original 
 plot won't dramatically change. 
 
-We can jitter our points using the `geom_jitter()` function instead of the
-`geom_point()`  function, as seen below:
-
-
-~~~
-interviews_plotting %>%
-    ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter()
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-adding-jitter-1.png" title="plot of chunk adding-jitter" alt="plot of chunk adding-jitter" width="612" style="display: block; margin: auto;" />
-The `geom_jitter()` function allows for us to specify the amount of random
-motion in the jitter, using the `width` and `height` arguments. When we don't 
-specify values for `width` and `height`, `geom_jitter()` defaults to 40% of the
-resolution of the data (the smallest change that can be measured). Hence, if we 
-would like *less* spread in our jitter than was default, we should pick values 
-between 0.1 and 0.4. Experiment with the values to see how your plot changes.
-
-
-~~~
-interviews_plotting %>%
-    ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5,
-                width = 0.2,
-                height = 0.2)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-adding-width-height-1.png" title="plot of chunk adding-width-height" alt="plot of chunk adding-width-height" width="612" style="display: block; margin: auto;" />
-
-For our final change, we can also add colours for all the points by specifying 
-a `color` argument inside the `geom_jitter()` function:
-
-
-~~~
-interviews_plotting %>%
-    ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5,
-                color = "blue",
-                width = 0.2,
-                height = 0.2)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-adding-colors-1.png" title="plot of chunk adding-colors" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" />
-
-To colour each village in the plot differently, you could use a vector as an input 
-to the argument **`color`**.  However, because we are now mapping features of the
-data to a colour, instead of setting one colour for all points, the colour of the 
-points now needs to be set inside a call to the **`aes`** function. When we map 
-a variable in our data to the colour of the points, **`ggplot2`** will provide a
-different colour corresponding to the different values of the variable. We will 
-continue to specify the value of **`alpha`**, **`width`**, and **`height`**
-outside of the **`aes`** function because we are using the same value for 
-every point. ggplot2 understands both the Commonwealth English and 
-American English spellings for colour, i.e., you can use either `color` 
-or `colour`. Here is an example where we color points by the **`village`** 
-of the observation:
-
-
-
-~~~
-interviews_plotting %>%
-    ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-color-by-species-1.png" title="plot of chunk color-by-species" alt="plot of chunk color-by-species" width="612" style="display: block; margin: auto;" />
-
-There appears to be a positive trend between number of household
-members and number of items owned (from the list provided). Additionally, 
-this trend does not appear to be different by village.
 
 > ## Notes 
 > 
