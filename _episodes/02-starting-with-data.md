@@ -115,6 +115,20 @@ entries in the dataset into `NA`.
 library(tidyverse)
 library(here)
 
+here("data", "SAFI_clean.csv")
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "/home/runner/work/beginning-R/beginning-R/data/SAFI_clean.csv"
+~~~
+{: .output}
+
+
+
+~~~
 interviews <- read_csv(
   here("data", "SAFI_clean.csv"), 
   na = "NULL")
