@@ -149,7 +149,7 @@ filter(interviews, village == "Chirodzo")
 
 
 ~~~
-# A tibble: 39 x 14
+# A tibble: 39 × 14
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
@@ -188,7 +188,7 @@ filter(interviews, village == "Chirodzo",
 
 
 ~~~
-# A tibble: 10 x 14
+# A tibble: 10 × 14
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
@@ -222,7 +222,7 @@ filter(interviews, village == "Chirodzo" &
 
 
 ~~~
-# A tibble: 10 x 14
+# A tibble: 10 × 14
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
@@ -255,7 +255,7 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
 
 
 ~~~
-# A tibble: 88 x 14
+# A tibble: 88 × 14
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
@@ -326,7 +326,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 39 x 5
+# A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
    <chr>    <dttm>                  <dbl>     <dbl> <chr>               
  1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
@@ -373,7 +373,7 @@ interviews_ch
 
 
 ~~~
-# A tibble: 39 x 5
+# A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
    <chr>    <dttm>                  <dbl>     <dbl> <chr>               
  1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
@@ -413,7 +413,7 @@ expression.
 > > 
 > > 
 > > ~~~
-> > # A tibble: 33 x 3
+> > # A tibble: 33 × 3
 > >    affect_conflicts liv_count no_meals
 > >    <chr>                <dbl>    <dbl>
 > >  1 once                     3        2
@@ -451,7 +451,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 131 x 15
+# A tibble: 131 × 15
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
@@ -490,7 +490,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 92 x 15
+# A tibble: 92 × 15
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1      1 God     2016-11-17 00:00:00         7         9 muddaub              1
@@ -566,7 +566,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 3 x 2
+# A tibble: 3 × 2
   village  mean_no_membrs
   <chr>             <dbl>
 1 Chirodzo           7.08
@@ -598,7 +598,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 9 x 3
+# A tibble: 9 × 3
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
@@ -636,7 +636,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 9 x 3
+# A tibble: 9 × 3
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
 1 Chirodzo no                   8.06
@@ -675,7 +675,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 6 x 3
+# A tibble: 6 × 3
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
@@ -713,7 +713,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 6 x 4
+# A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
   <chr>    <chr>               <dbl>      <dbl>
@@ -752,7 +752,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 6 x 4
+# A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
   <chr>    <chr>               <dbl>      <dbl>
@@ -789,7 +789,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 6 x 4
+# A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
   <chr>    <chr>               <dbl>      <dbl>
@@ -819,7 +819,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 3 x 2
+# A tibble: 3 × 2
   village      n
   <chr>    <int>
 1 Chirodzo    39
@@ -841,7 +841,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 3 x 2
+# A tibble: 3 × 2
   village      n
   <chr>    <int>
 1 Ruaca       49
@@ -868,7 +868,7 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > # A tibble: 2 x 2
+> > # A tibble: 2 × 2
 > >   no_meals     n
 > >      <dbl> <int>
 > > 1        2    52
@@ -899,7 +899,7 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > # A tibble: 3 x 5
+> > # A tibble: 3 × 5
 > >   village  mean_no_membrs min_no_membrs max_no_membrs     n
 > >   <chr>             <dbl>         <dbl>         <dbl> <int>
 > > 1 Chirodzo           7.08             2            12    39
@@ -959,7 +959,7 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > # A tibble: 5 x 3
+> > # A tibble: 5 × 3
 > > # Groups:   year [2]
 > >    year month max_no_membrs
 > >   <dbl> <dbl>         <dbl>
@@ -1009,7 +1009,7 @@ interviews %>%
 
 
 ~~~
-# A tibble: 131 x 4
+# A tibble: 131 × 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
  1      1 God      2016-11-17 00:00:00 uuid:ec241f2c-0609-46ed-b5e8-fe575f6cefef
@@ -1042,19 +1042,19 @@ interviews %>%
 
 
 ~~~
-# A tibble: 10 x 4
+# A tibble: 10 × 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
- 1     10 Chirodzo 2016-12-16 00:00:00 uuid:8f4e49bc-da81-4356-ae34-e0d794a23721
- 2     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
- 3     50 Chirodzo 2016-11-16 00:00:00 uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c
- 4     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
- 5     46 Chirodzo 2016-11-17 00:00:00 uuid:35f297e0-aa5d-4149-9b7b-4965004cfc37
- 6     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
- 7     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440
- 8     35 Chirodzo 2016-11-17 00:00:00 uuid:ff7496e7-984a-47d3-a8a1-13618b5683ce
- 9     21 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
-10     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
+ 1     63 Chirodzo 2016-11-16 00:00:00 uuid:86ed4328-7688-462f-aac7-d6518414526a
+ 2      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
+ 3     51 Chirodzo 2016-11-16 00:00:00 uuid:18ac8e77-bdaf-47ab-85a2-e4c947c9d3ce
+ 4     56 Chirodzo 2016-11-16 00:00:00 uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76
+ 5     67 Chirodzo 2016-11-16 00:00:00 uuid:6c15d667-2860-47e3-a5e7-7f679271e419
+ 6     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
+ 7     61 Chirodzo 2016-11-16 00:00:00 uuid:2401cf50-8859-44d9-bd14-1bf9128766f2
+ 8    200 Chirodzo 2017-06-04 00:00:00 uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7
+ 9     69 Chirodzo 2016-11-16 00:00:00 uuid:f86933a5-12b8-4427-b821-43c5b039401d
+10     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
 ~~~
 {: .output}
 
@@ -1368,7 +1368,7 @@ interviews_items_owned %>%
 
 
 ~~~
-# A tibble: 3 x 3
+# A tibble: 3 × 3
 # Groups:   village [3]
   village  bicycle     n
   <chr>    <lgl>   <int>
@@ -1396,7 +1396,7 @@ interviews_items_owned %>%
 
 
 ~~~
-# A tibble: 3 x 2
+# A tibble: 3 × 2
   village  mean_items
   <chr>         <dbl>
 1 Chirodzo       4.62
@@ -1442,7 +1442,7 @@ interviews_items_owned %>%
 > > 
 > > 
 > > ~~~
-> > # A tibble: 3 x 2
+> > # A tibble: 3 × 2
 > >   memb_assoc mean_months
 > >   <chr>            <dbl>
 > > 1 no                2   

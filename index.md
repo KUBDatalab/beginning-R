@@ -33,7 +33,8 @@ briefly mentioned.
 >
 > #### Prerequisites
 >
-> This lesson requires a working copy of **R** and **RStudio**.
+> This lesson requires a working copy of **R** and **RStudio**, or access
+> to [Rstudio.cloud](https://rstudio.cloud/).
 > <br>To most effectively use these materials, please make sure to install
 > everything *before* working through this lesson.
 {: .prereq}
