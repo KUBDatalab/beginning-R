@@ -174,6 +174,16 @@ interviews_plotting %>%
 
 <img src="../fig/rmd-04-first-ggplot-1.png" title="plot of chunk first-ggplot" alt="plot of chunk first-ggplot" width="612" style="display: block; margin: auto;" />
 
+plot working?
+
+~~~
+plot(interviews_plotting$no_membrs, interviews_plotting$number_items)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
+
+
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
 templates and conveniently explore different types of plots, so the above plot

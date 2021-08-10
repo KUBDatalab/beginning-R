@@ -134,6 +134,12 @@ interviews_plotting %>%
     geom_point()
 ```
 
+plot working?
+```{r}
+plot(interviews_plotting$no_membrs, interviews_plotting$number_items)
+```
+
+
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
 templates and conveniently explore different types of plots, so the above plot
