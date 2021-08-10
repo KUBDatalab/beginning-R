@@ -20,6 +20,7 @@ to manipulate them and calculate summary statistics.
 Logical structures and loops are introduced, and defining your own functions
 briefly mentioned.
 
+
 > ## Getting Started
 >
 > Data Carpentry's teaching is hands-on, so participants are encouraged to use
