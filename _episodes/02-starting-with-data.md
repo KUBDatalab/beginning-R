@@ -129,6 +129,20 @@ here("data", "SAFI_clean.csv")
 
 
 ~~~
+getwd()
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "/home/runner/work/beginning-R/beginning-R/_episodes_rmd"
+~~~
+{: .output}
+
+
+
+~~~
 interviews <- read_csv(
   here("data", "SAFI_clean.csv"), 
   na = "NULL")
