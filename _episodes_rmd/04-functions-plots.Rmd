@@ -3,22 +3,19 @@ title: "A couple of plots. And making our own functions"
 teaching: 80
 exercises: 35
 questions:
-  - "What are the components of a ggplot?"
   - "How do I create scatterplots, boxplots, and barplots?"
-  - "How can I change the aesthetics (ex. colour, transparency) of my plot?"
-  - "How can I create multiple plots at once?"
+  - "How can I define my own functions"
 objectives:
    - "Produce scatter plots and boxplots using Base R."
    - "Write your own function"
    - "Write loops to repeat calculations"
    - "Use logical tests in loops"
 keypoints:
-   - "`ggplot2` is a flexible and useful tool for creating plots in R."
-   - "The data set and coordinate system can be defined using the `ggplot` function."
-   - "Additional layers, including geoms, are added using the `+` operator."
    - "Boxplots are useful for visualizing the distribution of a continuous variable."
    - "Barplots are useful for visualizing categorical data."
-   - "Faceting allows you to generate multiple plots based on a categorical variable."
+   - "Functions allows you to do exactly the same calculations on lots of different data."
+   - "Loops allows you to apply the same function to at lot of data"
+   - "Logical tests allow you to apply different calculations on data, depending on the data."
 source: Rmd
 ---
 
@@ -28,22 +25,23 @@ knitr_fig_path("04-")
 source("../bin/download_data.R")
 ```
 
-We start by loading the required package. **`ggplot2`** is also included in the
-**`tidyverse`** package.
+The **`tidyverse`** package includes the package **`ggplot2`**. If you want to 
+make advanced, publication ready plots, we recommend using that. Here we are going
+to take a look at at few of the fundamental options for plotting, build into 
+R instead.
 
-```{r load-package, message=FALSE, purl=FALSE}
-library(tidyverse)
-```
-
-If not still in the workspace, load the data we saved in the previous lesson.
+If not still in the workspace, load the data we saved in the previous lesson. 
+Begin by loading the tidyverse package:
 
 
 ```{r load-data, purl=FALSE}
+library(tidyverse)
 interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 ```
 
+
 If you were unable to complete the previous lesson or did not save the data,
-then you can create it now.
+then you can create it now:
 
 ```{r, purl = FALSE, eval = FALSE}
 ## Not run, but can be used to load in data from previous lesson!
@@ -66,6 +64,37 @@ interviews_plotting <- interviews %>%
   mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
   mutate(number_items = rowSums(select(., bicycle:car)))
 ```
+
+## Plotting with **`Base R`**
+
+**`Base R`** is the term we use when we are relying solely on the standard functions
+in R, without importing libraries to add to the functionality.
+
+**`Base R`** plot functions are usually the quickest way to get at glimpse of 
+the data we work with, and produces very "clean" plots without fancy details.
+
+Getting **`Base R`** plots to look nice or have colours however is not that simple
+or quick. For those purposes we would recommend the **`ggplot2`** package.
+
+### Scatterplots ###
+
+Scatterplots are plots of individual points in two dimensions, where the position
+of the point is determined by the values of two variables, one determining the 
+position on the X-axis, the other on the Y-axis.
+
+
+```{r first-ggplot, purl=FALSE}
+plot(interviews_plotting$no_membrs, interviews_plotting$number_items)  
+```
+
+
+We start by loading the required package. **`ggplot2`** is also included in the
+**`tidyverse`** package.
+
+```{r load-package, message=FALSE, purl=FALSE}
+library(tidyverse)
+```
+
 
 ## Plotting with **`ggplot2`**
 
@@ -738,5 +767,8 @@ ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
 ```
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
+
+## Making our own functions ##
+
 
 {% include links.md %}

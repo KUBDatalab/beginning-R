@@ -17,8 +17,9 @@ with some basic information on the syntax of R, the interface to RStudio,
 and move on to how to import CSV files, the structure of data frames, how 
 to manipulate them and calculate summary statistics. 
 
-Logical structures and loops are introduced, and defining your own functions
-briefly mentioned.
+Fundamental plots are introduced.
+
+Defining custom functions is presented, along with logical structures and loops.
 
 > ## Getting Started
 >
