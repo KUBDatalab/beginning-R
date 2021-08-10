@@ -116,14 +116,15 @@ entries in the dataset into `NA`.
 library(tidyverse)
 library(here)
 
-here("data", "SAFI_clean.csv")
+interviews <- read_csv("../data/SAFI_clean.csv", na = "NULL")
+```
 
-getwd()
+The specific path we are using here is dependent on the specific setup. If you have 
+followed the recommendations for structuring your project-folder, it should be 
+this command:
 
-
-interviews <- read_csv(
-  here("data", "SAFI_clean.csv"), 
-  na = "NULL")
+```{r, eval = FALSE,  message = FALSE, purl = FALSE}
+interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 ```
 
 In the above code, we notice the `here()` function takes folder and file names
