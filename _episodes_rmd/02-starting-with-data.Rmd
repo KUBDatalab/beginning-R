@@ -116,6 +116,8 @@ entries in the dataset into `NA`.
 library(tidyverse)
 library(here)
 
+here("data", "SAFI_clean.csv")
+
 interviews <- read_csv(
   here("data", "SAFI_clean.csv"), 
   na = "NULL")
