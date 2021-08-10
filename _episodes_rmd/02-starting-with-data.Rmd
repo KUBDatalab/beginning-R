@@ -118,6 +118,9 @@ library(here)
 
 here("data", "SAFI_clean.csv")
 
+getwd()
+
+
 interviews <- read_csv(
   here("data", "SAFI_clean.csv"), 
   na = "NULL")
