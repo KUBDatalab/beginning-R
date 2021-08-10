@@ -115,37 +115,17 @@ entries in the dataset into `NA`.
 library(tidyverse)
 library(here)
 
-here("data", "SAFI_clean.csv")
+interviews <- read_csv("../data/SAFI_clean.csv", na = "NULL")
 ~~~
 {: .language-r}
 
+The specific path we are using here is dependent on the specific setup. If you have 
+followed the recommendations for structuring your project-folder, it should be 
+this command:
 
 
 ~~~
-[1] "/home/runner/work/beginning-R/beginning-R/data/SAFI_clean.csv"
-~~~
-{: .output}
-
-
-
-~~~
-getwd()
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] "/home/runner/work/beginning-R/beginning-R/_episodes_rmd"
-~~~
-{: .output}
-
-
-
-~~~
-interviews <- read_csv(
-  here("data", "SAFI_clean.csv"), 
-  na = "NULL")
+interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 ~~~
 {: .language-r}
 
