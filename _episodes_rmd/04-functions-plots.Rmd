@@ -84,7 +84,7 @@ position on the X-axis, the other on the Y-axis.
 
 
 ```{r first-ggplot, purl=FALSE}
-#plot(interviews_plotting$no_membrs, interviews_plotting$number_items)  
+plot(interviews_plotting$no_membrs, interviews_plotting$number_items)  
 ```
 
 
