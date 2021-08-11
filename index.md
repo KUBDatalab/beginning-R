@@ -31,7 +31,7 @@ briefly mentioned.
 
 > ## Getting Started
 >
-> Data Carpentry's teaching is hands-on, so participants are encouraged to use
+> Our teaching is hands-on, so participants are encouraged to use
 > their own computers to ensure the proper setup of tools for an efficient
 > workflow.
 >

@@ -35,8 +35,7 @@ RStudio needs R and therefore both need to be installed on your computer.
 
 To make it easier to interact with R, we will use RStudio. RStudio is the most
 popular IDE (Integrated Development Environmemt) for R. An IDE is a piece of
-software that provides
-tools to make programming easier.
+software that provides tools to make programming easier.
 
 
 ## Why learn R?
@@ -71,7 +70,7 @@ reproducible, so knowing R will give you an edge with these requirements.
 
 ### R is interdisciplinary and extensible
 
-With 10,000+ packages that can be installed to extend its capabilities, R
+With 18,000+ packages that can be installed to extend its capabilities, R
 provides a framework that allows you to combine statistical approaches from many
 scientific disciplines to best suit the analytical framework you need to analyze
 your data. For instance, R has packages for image analysis, GIS, time series,
@@ -347,7 +346,7 @@ the command(s) you entered and correct the error.
 ## Installing additional packages using the packages tab
 
 In addition to the core R installation, there are in excess of
-10,000 additional packages which can be used to extend the
+18,000 additional packages which can be used to extend the
 functionality of R. Many of these have been written by R users and
 have been made available in central repositories, like the one
 hosted at CRAN, for anyone to download and install into their own R

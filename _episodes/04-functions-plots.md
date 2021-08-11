@@ -262,6 +262,25 @@ output of our function.
 {: .challenge}
 
 ## Logical tests in functions ##
+Some times we want to do something different to the data, depending on the
+data. We can control the flow of the code using the if() construction.
+
+As an example:
+if(x<10){
+  print("X is smaller than 10")
+}else{
+  print("x is larger than 10")
+}
+
+The if() function will run the code provided in the curly braces {}, if, and 
+only if, the expression in the paranthesis is true. If x is 11, x will not be smaller than 10, and the first print function will not be executed.
+
+The else-part is not requiered, but normally we will have to execute some other code if the statement in the if-function is not true. In this case if x is 11, the first print-function will not be executed, but the second will.
+
+We use logical tests to handle data differently, depending on some characteristics of the data.
+
+## loops ##
+
 
 
 {% include links.md %}
