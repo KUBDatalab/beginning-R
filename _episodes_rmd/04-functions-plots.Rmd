@@ -78,76 +78,65 @@ of the x-axis and one containing the values for the y-axis. Here we use the
 $-notation:
 
 ```{r first-scatterplot}
-plot(interviews_plotting$no_membrs, interviews_plotting$number_items)
+plot(interviews_plotting$years_liv, interviews_plotting$number_items)
 ```
+We are plotting the number of items owned vs. the number of years lived in the 
+village. A hypothesis could be, that the respondents accumulate more items 
+the longer they have lived in the village.
 
-## Boxplots ##
+Scatterplots are useful for showing that sort for relationships in the data.
+Here it does not appear that the correlation exists; there is no clear trend.
 
-## Barplots ""
+We might want to adjust the labels on the axes, and add a main title:
+```{r}
+plot(interviews_plotting$years_liv, interviews_plotting$number_items, 
+     main = "Relation between years lived in village and number of items owned",
+     xlab = "Years lived",
+     ylab = "Items owned")
 
-
-## Boxplot
-
-We can use boxplots to visualize the distribution of rooms for each
-wall type:
-
-```{r boxplot, purl=FALSE}
-interviews_plotting %>%
-    ggplot(aes(x = respondent_wall_type, y = rooms)) +
-    geom_boxplot()
-```
-
-
-We can see that muddaub houses and sunbrick houses tend to be smaller than
-burntbrick houses.
-
-Notice how the  boxplot layer is behind the jitter layer? What do you need to
-change in the code to put the boxplot in behind the points such that it's not 
-hidden?
-
-
-## Barplots
-
-Barplots are also useful for visualizing categorical data. By default,
-`geom_bar` accepts a variable for x, and plots the number of instances each
-value of x (in this case, wall type) appears in the dataset.
-
-```{r barplot-1}
-interviews_plotting %>%
-    ggplot(aes(x = respondent_wall_type)) +
-    geom_bar()
 ```
 
 
-To calculate this percentage data frame, we needed to use the `across()` 
-function within a `summarize()` operation. Unlike the previous example with a 
-single wall type variable, where each response was exactly one of the types 
-specified, people can (and do) own more than one item. So there are multiple 
-columns of data (one for each item), and the percentage calculation needs to be 
-repeated for each column.
-
-Combining `summarize()` with `across()` allows us to specify first, the columns 
-to be summarized (`bicycle:no_listed_items`) and then the calculation. Because 
-our calculation is a bit more complex than is available in a built-in function, 
-we define a new formula:
-* `~` indicates that we are defining a formula, 
-* `sum(.x)` gives the number of people owning that item by counting the number of `TRUE` 
-values (`.x` is shorthand for the column being operated on), 
-* and `n()` gives the current group size.
-
-After the `summarize()` operation, we have a table of percentages with each item 
-in its own column, so a `pivot_longer()` is required to transform the table into 
-an easier format for plotting. Using this data frame, we can now create a 
-multi-paneled bar plot.
-
-```{r percent-items-barplot}
-percent_items %>%
-    ggplot(aes(x = village, y = percent)) +
-    geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items) +
-    theme_bw() +
-    theme(panel.grid = element_blank())
+## Boxplots 
+We can use boxplots to visualize the distribution of rooms for each wall type:
+```{r}
+boxplot(interviews_plotting$rooms~interviews_plotting$respondent_wall_type)
 ```
+Two new things happens here. First, we are using a new way of telling the 
+plot function what relationship we want to visualise. 
+The function notation y~x, tells the boxplot function that we want to visualise
+y as a function of x. In this case we want to visualise the number of rooms, as 
+af function of the wall type. 
+Secondly, we use a boxplot. A boxplots shows the distribution of the values on 
+the y-axis. The median value is indicated by the solid bar.
+The box encapsulates 50% of the observations. Its upper and lower borders 
+represents the interquartile range (IQR). 
+The whiskers on the plot - here only the upper whiskers are shown due to the
+nature of the data, represents the range of the data. The distance from the 
+upper part of the box, to the whisker is 1.5 times the interquartile range.
+The dots that we see for muddaub and sunbricks are outliers. Observations that
+lies so far from the rest of the observations, that we consider them as 
+outliers.
+
+Depending on the data, and the nature of the analyses we are going to do,
+outliers are either very interesting, or something that we can ignore.
+
+
+
+## Histograms
+
+Another useful plottype are histograms. 
+```{r}
+hist(interviews_plotting$rooms)
+```
+
+Histograms counts the number of observations in our data, that lies between 
+two values. Here the "breaks" between the values on the x-axis corresponds
+nicely to the number of rooms, but they do not have to.
+
+
+
+
 
 ## Writing our own functions ##
 
@@ -218,13 +207,93 @@ if(x<10){
 }
 
 The if() function will run the code provided in the curly braces {}, if, and 
-only if, the expression in the paranthesis is true. If x is 11, x will not be smaller than 10, and the first print function will not be executed.
+only if, the expression in the paranthesis is true. If x is 11, x is not  
+smaller than 10, and the first print function will not be executed.
 
-The else-part is not requiered, but normally we will have to execute some other code if the statement in the if-function is not true. In this case if x is 11, the first print-function will not be executed, but the second will.
+The else-part is not requiered, but normally we will have to execute some other 
+code if the statement in the if-function is not true. In this case if x is 11, 
+the first print-function will not be executed, but the second will.
 
 We use logical tests to handle data differently, depending on some characteristics of the data.
 
-## loops ##
+## loops
+
+Loops are constructs we use to do the same operations on lots of data.
+
+### for loops
+For loops are constructs used to apply one or more functions on a series of data.
+
+```{r}
+for(i in 1:10){
+  temp <- sqrt(i)
+  print(temp)
+}
+
+```
+
+will take every value in the vector 1:10, the digits 1 to 10, one by one, assign 
+it to a temporary variable i and run the code we write in the curly braces.
+Here the for-loop will take all numbers from 1 to 10, calculate the
+squareroot of them. The result is assigned to another temporary variable "temp"
+and then temp is printed.
+
+#### Danger Will Robinson
+
+As a general rule, R does not handle loops very efficiently. This is a simple 
+loop, operating on only 10 values, and we wont notice the difference in speed.
+
+But we can measure it. 
+
+The Sys.time() function will tell us what time our computer thinks it is.
+If we run that just before, and just after our loop, we can calculate how long
+it took to run.
+```{r}
+tic <- Sys.time()
+for(i in 1:1000){
+  temp <- sqrt(i)
+  print(temp)
+}
+toc <- Sys.time()
+for_time <- toc - tic
+for_time
+```
+
+A more efficient way to calculate the square root of the numbers from 1 to 10
+would be use the fact that sqrt() is a vectorized function that will calculate 
+the square root of every element in a vector used as input to it:
+
+```{r}
+tic <- Sys.time()
+sqrt(1:1000)
+toc <- Sys.time()
+vect_time <- toc - tic
+vect_time
+```
+
+And we can then compare how much faster the latter vectorized solution is.
+```{r}
+as.numeric(for_time)/as.numeric(vect_time)
+```
+More than double as fast!
+To be fair most of the time is spent outputting the results, but as a general
+rule utilizing the vectorized nature of functions is faster than writing loops.
+But that is not always a luxury we have.
+
+### while loops
+While loops are loops that execute the code - as long as some criterium is satisfied.
+```{r}
+i <- 1
+while(i <= 10){
+  print(sqrt(i))
+  i <- i + 1
+}
+```
+This loop structure does the exact same as the two previous examples.
+Here we need to assign an initial value i, and then our while loop will execute
+the code within the curly braces, as long as i is smaller than or equal to 10.
+It is important to remember to increment the value of i - otherwise i will always
+be 1, and therefore always smaller than 10. And the loop will never stop.
+
 
 
 
