@@ -28,8 +28,7 @@ knitr_fig_path("04-")
 source("../bin/download_data.R")
 ```
 
-We start by loading the required package. **`ggplot2`** is also included in the
-**`tidyverse`** package.
+We start by loading the **`tidyverse`** package.
 
 ```{r load-package, message=FALSE, purl=FALSE}
 library(tidyverse)
@@ -38,7 +37,7 @@ library(tidyverse)
 If not still in the workspace, load the data we saved in the previous lesson.
 
 
-```{r load-data, purl=FALSE}
+```{r load-data, purl=FALSE, eval=F}
 interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 ```
 
@@ -247,7 +246,7 @@ But we can measure it.
 The Sys.time() function will tell us what time our computer thinks it is.
 If we run that just before, and just after our loop, we can calculate how long
 it took to run.
-```{r}
+```{r echo=F}
 tic <- Sys.time()
 for(i in 1:1000){
   temp <- sqrt(i)
@@ -262,7 +261,7 @@ A more efficient way to calculate the square root of the numbers from 1 to 10
 would be use the fact that sqrt() is a vectorized function that will calculate 
 the square root of every element in a vector used as input to it:
 
-```{r}
+```{r ehco=F}
 tic <- Sys.time()
 sqrt(1:1000)
 toc <- Sys.time()
