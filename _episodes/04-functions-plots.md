@@ -1341,7 +1341,7 @@ for_time
 
 
 ~~~
-Time difference of 0.02438641 secs
+Time difference of 0.02726984 secs
 ~~~
 {: .output}
 
@@ -1517,7 +1517,7 @@ vect_time
 
 
 ~~~
-Time difference of 0.003997326 secs
+Time difference of 0.003821373 secs
 ~~~
 {: .output}
 
@@ -1531,7 +1531,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 6.10068
+[1] 7.136137
 ~~~
 {: .output}
 More than double as fast!

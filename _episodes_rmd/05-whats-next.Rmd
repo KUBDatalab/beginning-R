@@ -1,7 +1,7 @@
 ---
-title: "A couple of plots. And making our own functions"
-teaching: 80
-exercises: 35
+title: "What is the next step?"
+teaching: 10
+exercises: 0
 questions:
   - "What do I do now?"
   - "What is the next step?"
