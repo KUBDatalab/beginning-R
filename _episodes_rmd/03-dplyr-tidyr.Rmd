@@ -903,7 +903,7 @@ interviews_plotting <- interviews %>%
 Now we can save this dataframe to our `data_output` directory.
 
 ```{r, purl = FALSE, eval = FALSE}
-write_csv (interviews_plotting, file = "data_output/interviews_plotting.csv")
+write_csv(interviews_plotting, file = "data_output/interviews_plotting.csv")
 ```
 
 ```{r, purl = FALSE, eval = TRUE, echo = FALSE}
