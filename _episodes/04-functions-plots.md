@@ -37,9 +37,14 @@ library(tidyverse)
 If not still in the workspace, load the data we saved in the previous lesson.
 
 
+~~~
+Error: '/data_output/interviews_plotting.csv' does not exist.
+~~~
+{: .error}
+
 
 ~~~
-interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
+interviews_plotting <- read_csv("/data_output/interviews_plotting.csv")
 ~~~
 {: .language-r}
 
@@ -343,7 +348,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 7.385188
+[1] 7.133426
 ~~~
 {: .output}
 More than double as fast!
