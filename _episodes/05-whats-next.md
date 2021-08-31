@@ -26,16 +26,21 @@ source: Rmd
 
 ## Great sites
 
-edx
-datacamp
-cognitive class
+(edx)[https://www.edx.org/]
+
+(datacamp)[https://www.datacamp.com/]
+
+(cognitive class)[https://cognitiveclass.ai/]
+
 documentation
-Vignettes
+
+
 
 ## What should I practice on?
 
-Kaggle
-project euler
+(Kaggle)[https://www.kaggle.com/]
+
+(Project Euler)[https://projecteuler.net/]
 
 ## Contact us!
 
