@@ -36,9 +36,12 @@ library(tidyverse)
 
 If not still in the workspace, load the data we saved in the previous lesson.
 
+```{r load-data-hidde, purl=FALSE, eval=T, echo=F, results="hide"}
+interviews_plotting <- read_csv("/data_output/interviews_plotting.csv")
+```
 
 ```{r load-data, purl=FALSE, eval=F}
-interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
+interviews_plotting <- read_csv("/data_output/interviews_plotting.csv")
 ```
 
 If you were unable to complete the previous lesson or did not save the data,
