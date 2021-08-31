@@ -305,6 +305,19 @@ The Sys.time() function will tell us what time our computer thinks it is.
 If we run that just before, and just after our loop, we can calculate how long
 it took to run.
 
+~~~
+tic <- Sys.time()
+for(i in 1:1000){
+  temp <- sqrt(i)
+  print(temp)
+}
+toc <- Sys.time()
+for_time <- toc - tic
+~~~
+{: .language-r}
+
+
+
 
 A more efficient way to calculate the square root of the numbers from 1 to 10
 would be use the fact that sqrt() is a vectorized function that will calculate 
@@ -330,7 +343,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 5.050799
+[1] 6.984258
 ~~~
 {: .output}
 More than double as fast!
