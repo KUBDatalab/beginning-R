@@ -26,21 +26,21 @@ source: Rmd
 
 ## Great sites
 
-(edx)[https://www.edx.org/]
+[edx](https://www.edx.org/)
 
-(datacamp)[https://www.datacamp.com/]
+[datacamp](https://www.datacamp.com/)
 
-(cognitive class)[https://cognitiveclass.ai/]
+[cognitive class](https://cognitiveclass.ai/)
 
-documentation
+
 
 
 
 ## What should I practice on?
 
-(Kaggle)[https://www.kaggle.com/]
+[Kaggle](https://www.kaggle.com/)
 
-(Project Euler)[https://projecteuler.net/]
+[Project Euler](https://projecteuler.net/)
 
 ## Contact us!
 
@@ -50,10 +50,10 @@ students (and teachers and researchers) working with data.
 We do not guarantee that we will be able to solve your problems, but we will 
 do our best to help you.
 
-Our (calender)[https://kubkalender.kb.dk/calendar/datalab?cid=6416&t=d&d=0000-00-00&cal=6416&inc=0], 
+Our [calender](https://kubkalender.kb.dk/calendar/datalab?cid=6416&t=d&d=0000-00-00&cal=6416&inc=0), 
 containing our activities, courses, seminars, datasprints etc.
 
-Our (website)[https://kub.kb.dk/datalab]
+Our [website](https://kub.kb.dk/datalab)
 
 Our mail: kubdatalab@kb.dk
 

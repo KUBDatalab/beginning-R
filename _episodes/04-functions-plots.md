@@ -38,7 +38,7 @@ If not still in the workspace, load the data we saved in the previous lesson.
 
 
 ~~~
-Error: '/data_output/interviews_plotting.csv' does not exist.
+Error: '../data_output/interviews_plotting.csv' does not exist in current working directory ('/home/runner/work/beginning-R/beginning-R/_episodes_rmd').
 ~~~
 {: .error}
 
@@ -348,7 +348,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 7.133426
+[1] 6.216375
 ~~~
 {: .output}
 More than double as fast!
