@@ -592,8 +592,7 @@ Recall that you can use the `typeof()` function to find the type of your atomic 
 {: .challenge}
 
 Now that we have learned how to write scripts, and the basics of R's data
-structures, we are ready to start working with the SAFI dataset we have been
-using in the other lessons, and learn about data frames.
+structures, we are ready to start working a real dataset, and learn about data frames.
 
 
 {% include links.md %}
