@@ -141,7 +141,7 @@ interviews
 
 
 ~~~
-# A tibble: 131 × 14
+# A tibble: 131 × 45
    key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
     <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
  1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
@@ -154,9 +154,13 @@ interviews
  8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
  9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
 10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 7 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>
+# … with 121 more rows, and 38 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
+#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
+#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
+#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
+#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
+#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
 ~~~
 {: .output}
 
@@ -373,13 +377,17 @@ interviews[3, ]
 
 
 ~~~
-# A tibble: 1 × 14
+# A tibble: 1 × 45
   key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
 1      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
-# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
-#   instanceID <chr>
+# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
+#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
+#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
+#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
+#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
+#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
 ~~~
 {: .output}
 
@@ -405,7 +413,7 @@ interviews[, -1]          # The whole tibble, except the first column
 
 
 ~~~
-# A tibble: 131 × 13
+# A tibble: 131 × 44
    village  interview_date      no_membrs years_liv respondent_wall_type rooms
    <chr>    <dttm>                  <dbl>     <dbl> <chr>                <dbl>
  1 God      2016-11-17 00:00:00         3         4 muddaub                  1
@@ -418,9 +426,13 @@ interviews[, -1]          # The whole tibble, except the first column
  8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks              3
  9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks              1
 10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks              5
-# … with 121 more rows, and 7 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>
+# … with 121 more rows, and 38 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
+#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
+#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
+#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
+#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
+#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
 ~~~
 {: .output}
 
@@ -434,7 +446,7 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 
 
 ~~~
-# A tibble: 6 × 14
+# A tibble: 6 × 45
   key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
 1      1 God     2016-11-17 00:00:00         3         4 muddaub               1
@@ -443,9 +455,13 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 4      4 God     2016-11-17 00:00:00         7         6 burntbricks           1
 5      5 God     2016-11-17 00:00:00         7        40 burntbricks           1
 6      6 God     2016-11-17 00:00:00         3         3 muddaub               1
-# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
-#   instanceID <chr>
+# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
+#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
+#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
+#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
+#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
+#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
 ~~~
 {: .output}
 

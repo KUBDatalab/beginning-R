@@ -38,9 +38,30 @@ If not still in the workspace, load the data we saved in the previous lesson.
 
 
 ~~~
-Error: '../data_output/interviews_plotting.csv' does not exist in current working directory ('/home/runner/work/beginning-R/beginning-R/_episodes_rmd').
+Rows: 131 Columns: 45
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (5): village, respondent_wall_type, memb_assoc, affect_conflicts, inst...
+dbl   (8): key_ID, no_membrs, years_liv, rooms, liv_count, no_meals, number_...
+lgl  (31): bicycle, television, solar_panel, table, cow_cart, radio, cow_plo...
+dttm  (1): interview_date
+~~~
+{: .output}
+
+
+
+~~~
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+~~~
+{: .output}
 
 
 ~~~
@@ -91,12 +112,7 @@ plot(interviews_plotting$years_liv, interviews_plotting$number_items)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(interviews_plotting$years_liv, interviews_plotting$number_items): object 'interviews_plotting' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-first-scatterplot-1.png" title="plot of chunk first-scatterplot" alt="plot of chunk first-scatterplot" width="612" style="display: block; margin: auto;" />
 We are plotting the number of items owned vs. the number of years lived in the 
 village. A hypothesis could be, that the respondents accumulate more items 
 the longer they have lived in the village.
@@ -114,12 +130,7 @@ plot(interviews_plotting$years_liv, interviews_plotting$number_items,
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(interviews_plotting$years_liv, interviews_plotting$number_items, : object 'interviews_plotting' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
@@ -130,12 +141,7 @@ boxplot(interviews_plotting$rooms~interviews_plotting$respondent_wall_type)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(predvars, data, env): object 'interviews_plotting' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -166,12 +172,7 @@ hist(interviews_plotting$rooms)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in hist(interviews_plotting$rooms): object 'interviews_plotting' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="612" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
@@ -348,7 +349,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 7.028694
+[1] 29.66507
 ~~~
 {: .output}
 More than double as fast!
