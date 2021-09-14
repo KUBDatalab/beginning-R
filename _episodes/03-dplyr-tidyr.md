@@ -91,23 +91,8 @@ and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/mast
 
 ## Learning **`dplyr`** and **`tidyr`**
 
-To make sure everyone will use the same dataset for this lesson, we'll read
-again the SAFI dataset that we downloaded earlier.
-
-
-~~~
-## load the tidyverse
-library(tidyverse)
-
-interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
-
-## inspect the data
-interviews
-
-## preview the data
-# view(interviews)
-~~~
-{: .language-r}
+We are working with the same dataset as earlier. Refer to the 
+previous lesson to download the data, if you do not have it loaded.
 
 We're going to learn some of the most common **`dplyr`** functions:
 
@@ -129,11 +114,31 @@ read as "select columns from ___ to ___."
 
 ~~~
 # to select columns throughout the dataframe
-select(interviews, village, no_membrs, months_lack_food)
+select(interviews, village, no_membrs)
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in select(interviews, village, no_membrs): could not find function "select"
+~~~
+{: .error}
+
+
+
+~~~
 # to select a series of connected columns
 select(interviews, village:respondent_wall_type)
 ~~~
 {: .language-r}
+
+
+
+~~~
+Error in select(interviews, village:respondent_wall_type): could not find function "select"
+~~~
+{: .error}
 
 To choose rows based on specific criteria, we can use the `filter()` function.
 The argument after the dataframe is the condition we want our final
@@ -149,24 +154,9 @@ filter(interviews, village == "Chirodzo")
 
 
 ~~~
-# A tibble: 39 × 14
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
- 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 4     34 Chirod… 2016-11-17 00:00:00         8        18 burntbricks          3
- 5     35 Chirod… 2016-11-17 00:00:00         5        45 muddaub              1
- 6     36 Chirod… 2016-11-17 00:00:00         6        23 sunbricks            1
- 7     37 Chirod… 2016-11-17 00:00:00         3         8 burntbricks          1
- 8     43 Chirod… 2016-11-17 00:00:00         7        29 muddaub              1
- 9     44 Chirod… 2016-11-17 00:00:00         2         6 muddaub              1
-10     45 Chirod… 2016-11-17 00:00:00         9         7 muddaub              1
-# … with 29 more rows, and 7 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>
+Error in as.ts(x): object 'interviews' not found
 ~~~
-{: .output}
+{: .error}
 
 We can also specify multiple conditions within the `filter()` function. We can
 combine conditions using either "and" or "or" statements. In an "and" 
@@ -188,24 +178,9 @@ filter(interviews, village == "Chirodzo",
 
 
 ~~~
-# A tibble: 10 × 14
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
- 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
- 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
- 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
- 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
- 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
- 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
- 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
-10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
-# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
-#   instanceID <chr>
+Error in match.arg(method): object 'rooms' not found
 ~~~
-{: .output}
+{: .error}
 
 We can also form "and" statements with the `&` operator instead of commas:
 
@@ -222,24 +197,9 @@ filter(interviews, village == "Chirodzo" &
 
 
 ~~~
-# A tibble: 10 × 14
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
- 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
- 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
- 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
- 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
- 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
- 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
- 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
-10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
-# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
-#   instanceID <chr>
+Error in as.ts(x): object 'interviews' not found
 ~~~
-{: .output}
+{: .error}
 
 In an "or" statement, observations must meet *at least one* of the specified conditions. 
 To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
@@ -255,24 +215,9 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
 
 
 ~~~
-# A tibble: 88 × 14
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
- 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 4     23 Ruaca   2016-11-21 00:00:00        10        20 burntbricks          4
- 5     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks          2
- 6     25 Ruaca   2016-11-21 00:00:00        11         6 burntbricks          3
- 7     26 Ruaca   2016-11-21 00:00:00         3        20 burntbricks          2
- 8     27 Ruaca   2016-11-21 00:00:00         7        36 burntbricks          2
- 9     28 Ruaca   2016-11-21 00:00:00         2         2 muddaub              1
-10     29 Ruaca   2016-11-21 00:00:00         7        10 burntbricks          2
-# … with 78 more rows, and 7 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>
+Error in as.ts(x): object 'interviews' not found
 ~~~
-{: .output}
+{: .error}
 
 
 ## Pipes
@@ -286,9 +231,29 @@ that as input to the next function, like this:
 
 ~~~
 interviews2 <- filter(interviews, village == "Chirodzo")
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in as.ts(x): object 'interviews' not found
+~~~
+{: .error}
+
+
+
+~~~
 interviews_ch <- select(interviews2, village:respondent_wall_type)
 ~~~
 {: .language-r}
+
+
+
+~~~
+Error in select(interviews2, village:respondent_wall_type): could not find function "select"
+~~~
+{: .error}
 
 This is readable, but can clutter up your workspace with lots of objects that
 you have to name individually. With multiple steps, that can be hard to keep
@@ -302,6 +267,13 @@ interviews_ch <- select(filter(interviews, village == "Chirodzo"),
                          village:respondent_wall_type)
 ~~~
 {: .language-r}
+
+
+
+~~~
+Error in select(filter(interviews, village == "Chirodzo"), village:respondent_wall_type): could not find function "select"
+~~~
+{: .error}
 
 This is handy, but can be difficult to read if too many functions are nested, as
 R evaluates the expression from the inside out (in this case, filtering, then
@@ -326,22 +298,9 @@ interviews %>%
 
 
 ~~~
-# A tibble: 39 × 5
-   village  interview_date      no_membrs years_liv respondent_wall_type
-   <chr>    <dttm>                  <dbl>     <dbl> <chr>               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
-# … with 29 more rows
+Error in interviews %>% filter(village == "Chirodzo") %>% select(village:respondent_wall_type): could not find function "%>%"
 ~~~
-{: .output}
+{: .error}
 
 In the above code, we use the pipe to send the `interviews` dataset first
 through `filter()` to keep rows where `village` is "Chirodzo", then through
@@ -365,7 +324,19 @@ can assign it a new name:
 interviews_ch <- interviews %>%
     filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
+~~~
+{: .language-r}
 
+
+
+~~~
+Error in interviews %>% filter(village == "Chirodzo") %>% select(village:respondent_wall_type): could not find function "%>%"
+~~~
+{: .error}
+
+
+
+~~~
 interviews_ch
 ~~~
 {: .language-r}
@@ -373,22 +344,9 @@ interviews_ch
 
 
 ~~~
-# A tibble: 39 × 5
-   village  interview_date      no_membrs years_liv respondent_wall_type
-   <chr>    <dttm>                  <dbl>     <dbl> <chr>               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
-# … with 29 more rows
+Error in eval(expr, envir, enclos): object 'interviews_ch' not found
 ~~~
-{: .output}
+{: .error}
 
 Note that the final dataframe (`interviews_ch`) is the leftmost part of this
 expression.
@@ -413,22 +371,9 @@ expression.
 > > 
 > > 
 > > ~~~
-> > # A tibble: 33 × 3
-> >    affect_conflicts liv_count no_meals
-> >    <chr>                <dbl>    <dbl>
-> >  1 once                     3        2
-> >  2 never                    2        2
-> >  3 never                    2        3
-> >  4 once                     3        2
-> >  5 frequently               1        3
-> >  6 more_once                5        2
-> >  7 more_once                3        2
-> >  8 more_once                2        3
-> >  9 once                     3        3
-> > 10 never                    3        3
-> > # … with 23 more rows
+> > Error in interviews %>% filter(memb_assoc == "yes") %>% select(affect_conflicts, : could not find function "%>%"
 > > ~~~
-> > {: .output}
+> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -451,24 +396,9 @@ interviews %>%
 
 
 ~~~
-# A tibble: 131 × 15
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 8 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>, people_per_room <dbl>
+Error in interviews %>% mutate(people_per_room = no_membrs/rooms): could not find function "%>%"
 ~~~
-{: .output}
+{: .error}
 
 We may be interested in investigating whether being a member of an
 irrigation association had any effect on the ratio of household members
@@ -490,24 +420,9 @@ interviews %>%
 
 
 ~~~
-# A tibble: 92 × 15
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 2      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 3      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 4      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
- 5     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 6     12 God     2016-11-21 00:00:00         7        20 burntbricks          3
- 7     13 God     2016-11-21 00:00:00         6         8 burntbricks          1
- 8     15 God     2016-11-21 00:00:00         5        30 sunbricks            2
- 9     21 God     2016-11-21 00:00:00         8        20 burntbricks          1
-10     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks          2
-# … with 82 more rows, and 8 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>, people_per_room <dbl>
+Error in interviews %>% filter(!is.na(memb_assoc)) %>% mutate(people_per_room = no_membrs/rooms): could not find function "%>%"
 ~~~
-{: .output}
+{: .error}
 
 The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
 returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol
@@ -536,6 +451,13 @@ not** missing.
 > >     select(village, total_meals)
 > > ~~~
 > > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in interviews %>% mutate(total_meals = no_membrs * no_meals) %>% : could not find function "%>%"
+> > ~~~
+> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -566,14 +488,9 @@ interviews %>%
 
 
 ~~~
-# A tibble: 3 × 2
-  village  mean_no_membrs
-  <chr>             <dbl>
-1 Chirodzo           7.08
-2 God                6.86
-3 Ruaca              7.57
+Error in interviews %>% group_by(village) %>% summarize(mean_no_membrs = mean(no_membrs)): could not find function "%>%"
 ~~~
-{: .output}
+{: .error}
 
 You may also have noticed that the output from these calls doesn't run off the
 screen anymore. It's one of the advantages of `tbl_df` over dataframe.
@@ -591,28 +508,9 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+Error in interviews %>% group_by(village, memb_assoc) %>% summarize(mean_no_membrs = mean(no_membrs)): could not find function "%>%"
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 3
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs
-  <chr>    <chr>               <dbl>
-1 Chirodzo no                   8.06
-2 Chirodzo yes                  7.82
-3 Chirodzo <NA>                 5.08
-4 God      no                   7.13
-5 God      yes                  8   
-6 God      <NA>                 6   
-7 Ruaca    no                   7.18
-8 Ruaca    yes                  9.5 
-9 Ruaca    <NA>                 6.22
-~~~
-{: .output}
+{: .error}
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 `ungroup` function:
@@ -629,27 +527,9 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+Error in interviews %>% group_by(village, memb_assoc) %>% summarize(mean_no_membrs = mean(no_membrs)) %>% : could not find function "%>%"
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 3
-  village  memb_assoc mean_no_membrs
-  <chr>    <chr>               <dbl>
-1 Chirodzo no                   8.06
-2 Chirodzo yes                  7.82
-3 Chirodzo <NA>                 5.08
-4 God      no                   7.13
-5 God      yes                  8   
-6 God      <NA>                 6   
-7 Ruaca    no                   7.18
-8 Ruaca    yes                  9.5 
-9 Ruaca    <NA>                 6.22
-~~~
-{: .output}
+{: .error}
 
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
@@ -668,25 +548,9 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 6 × 3
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs
-  <chr>    <chr>               <dbl>
-1 Chirodzo no                   8.06
-2 Chirodzo yes                  7.82
-3 God      no                   7.13
-4 God      yes                  8   
-5 Ruaca    no                   7.18
-6 Ruaca    yes                  9.5 
-~~~
-{: .output}
+{: .error}
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
@@ -706,25 +570,9 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 6 × 4
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs min_membrs
-  <chr>    <chr>               <dbl>      <dbl>
-1 Chirodzo no                   8.06          4
-2 Chirodzo yes                  7.82          2
-3 God      no                   7.13          3
-4 God      yes                  8             5
-5 Ruaca    no                   7.18          2
-6 Ruaca    yes                  9.5           5
-~~~
-{: .output}
+{: .error}
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
 For instance, we can sort on `min_membrs` to put the group with the smallest
@@ -745,25 +593,9 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 6 × 4
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs min_membrs
-  <chr>    <chr>               <dbl>      <dbl>
-1 Chirodzo yes                  7.82          2
-2 Ruaca    no                   7.18          2
-3 God      no                   7.13          3
-4 Chirodzo no                   8.06          4
-5 God      yes                  8             5
-6 Ruaca    yes                  9.5           5
-~~~
-{: .output}
+{: .error}
 
 To sort in descending order, we need to add the `desc()` function. If we want to
 sort the results by decreasing order of minimum household size:
@@ -782,25 +614,9 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 6 × 4
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs min_membrs
-  <chr>    <chr>               <dbl>      <dbl>
-1 God      yes                  8             5
-2 Ruaca    yes                  9.5           5
-3 Chirodzo no                   8.06          4
-4 God      no                   7.13          3
-5 Chirodzo yes                  7.82          2
-6 Ruaca    no                   7.18          2
-~~~
-{: .output}
+{: .error}
 
 #### Counting
 
@@ -819,14 +635,9 @@ interviews %>%
 
 
 ~~~
-# A tibble: 3 × 2
-  village      n
-  <chr>    <int>
-1 Chirodzo    39
-2 God         43
-3 Ruaca       49
+Error in interviews %>% count(village): could not find function "%>%"
 ~~~
-{: .output}
+{: .error}
 
 For convenience, `count()` provides the `sort` argument to get results in
 decreasing order:
@@ -841,14 +652,9 @@ interviews %>%
 
 
 ~~~
-# A tibble: 3 × 2
-  village      n
-  <chr>    <int>
-1 Ruaca       49
-2 God         43
-3 Chirodzo    39
+Error in interviews %>% count(village, sort = TRUE): could not find function "%>%"
 ~~~
-{: .output}
+{: .error}
 
 > ## Exercise
 >
@@ -868,13 +674,9 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > # A tibble: 2 × 2
-> >   no_meals     n
-> >      <dbl> <int>
-> > 1        2    52
-> > 2        3    79
+> > Error in interviews %>% count(no_meals): could not find function "%>%"
 > > ~~~
-> > {: .output}
+> > {: .error}
 > {: .solution}
 >
 > Use `group_by()` and `summarize()` to find the mean, min, and max
@@ -899,14 +701,9 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > # A tibble: 3 × 5
-> >   village  mean_no_membrs min_no_membrs max_no_membrs     n
-> >   <chr>             <dbl>         <dbl>         <dbl> <int>
-> > 1 Chirodzo           7.08             2            12    39
-> > 2 God                6.86             3            15    43
-> > 3 Ruaca              7.57             2            19    49
+> > Error in interviews %>% group_by(village) %>% summarize(mean_no_membrs = mean(no_membrs), : could not find function "%>%"
 > > ~~~
-> > {: .output}
+> > {: .error}
 > {: .solution}
 >
 > What was the largest household interviewed in each month?
@@ -952,506 +749,12 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
+> > Error in interviews %>% mutate(month = month(interview_date), day = day(interview_date), : could not find function "%>%"
 > > ~~~
-> > {: .output}
-> > 
-> > 
-> > 
-> > ~~~
-> > # A tibble: 5 × 3
-> > # Groups:   year [2]
-> >    year month max_no_membrs
-> >   <dbl> <dbl>         <dbl>
-> > 1  2016    11            19
-> > 2  2016    12            12
-> > 3  2017     4            17
-> > 4  2017     5            15
-> > 5  2017     6            15
-> > ~~~
-> > {: .output}
+> > {: .error}
 > {: .solution}
 {: .challenge}
 
-## Reshaping with pivot_wider() and pivot_longer()
-
-There are essentially three rules that define a "tidy" dataset:
-
-1. Each variable has its own column
-2. Each observation has its own row
-3. Each value must have its own cell
-
-In this section we will explore how these rules are linked to the different
-data formats researchers are often interested in: "wide" and "long". This
-tutorial will help you efficiently transform your data shape regardless of
-original format. First we will explore qualities of the `interviews` data and
-how they relate to these different types of data formats.
-
-### Long and wide data formats
-
-In the `interviews` data, each row contains the values of variables associated
-with each record collected (each interview in the villages), where it is stated
-that the the `key_ID` was "added to provide a unique Id for each observation"
-and the `instance_ID` "does this as well but it is not as convenient to use."
-
-However, with some inspection, we notice that there are more than one row in the
-dataset with the same `key_ID` (as seen below). However, the `instanceID`s
-associated with these duplicate `key_ID`s are not the same. Thus, we should
-think of `instanceID` as the unique identifier for observations!
-
-
-~~~
-interviews %>%
-  select(key_ID, village, interview_date, instanceID)
-~~~
-{: .language-r}
-
-
-
-~~~
-# A tibble: 131 × 4
-   key_ID village  interview_date      instanceID                               
-    <dbl> <chr>    <dttm>              <chr>                                    
- 1      1 God      2016-11-17 00:00:00 uuid:ec241f2c-0609-46ed-b5e8-fe575f6cefef
- 2      1 God      2016-11-17 00:00:00 uuid:099de9c9-3e5e-427b-8452-26250e840d6e
- 3      3 God      2016-11-17 00:00:00 uuid:193d7daf-9582-409b-bf09-027dd36f9007
- 4      4 God      2016-11-17 00:00:00 uuid:148d1105-778a-4755-aa71-281eadd4a973
- 5      5 God      2016-11-17 00:00:00 uuid:2c867811-9696-4966-9866-f35c3e97d02d
- 6      6 God      2016-11-17 00:00:00 uuid:daa56c91-c8e3-44c3-a663-af6a49a2ca70
- 7      7 God      2016-11-17 00:00:00 uuid:ae20a58d-56f4-43d7-bafa-e7963d850844
- 8      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
- 9      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
-10     10 Chirodzo 2016-12-16 00:00:00 uuid:8f4e49bc-da81-4356-ae34-e0d794a23721
-# … with 121 more rows
-~~~
-{: .output}
-
-As seen in the code below, for each interview date in each village no
-`instanceID`s are the same. Thus, this format is what is called a "long" data
-format, where each observation occupies only one row in the dataframe.
-
-
-~~~
-interviews %>%
-  filter(village == "Chirodzo") %>%
-  select(key_ID, village, interview_date, instanceID) %>%
-  sample_n(size = 10)
-~~~
-{: .language-r}
-
-
-
-~~~
-# A tibble: 10 × 4
-   key_ID village  interview_date      instanceID                               
-    <dbl> <chr>    <dttm>              <chr>                                    
- 1     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
- 2     63 Chirodzo 2016-11-16 00:00:00 uuid:86ed4328-7688-462f-aac7-d6518414526a
- 3     52 Chirodzo 2016-11-16 00:00:00 uuid:6db55cb4-a853-4000-9555-757b7fae2bcf
- 4      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
- 5     35 Chirodzo 2016-11-17 00:00:00 uuid:ff7496e7-984a-47d3-a8a1-13618b5683ce
- 6     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
- 7     66 Chirodzo 2016-11-16 00:00:00 uuid:a457eab8-971b-4417-a971-2e55b8702816
- 8     54 Chirodzo 2016-11-16 00:00:00 uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919
- 9    192 Chirodzo 2017-06-03 00:00:00 uuid:f94409a6-e461-4e4c-a6fb-0072d3d58b00
-10     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
-~~~
-{: .output}
-
-We notice that the layout or format of the `interviews` data is in a format that
-adheres to rules 1-3, where
-
-- each column is a variable
-- each row is an observation
-- each value has its own cell
-
-This is called a "long" data format. But, we notice that each column represents
-a different variable. In the "longest" data format there would only be three
-columns, one for the id variable, one for the observed variable, and one for the
-observed value (of that variable). This data format is quite unsightly
-and difficult to work with, so you will rarely see it in use.
-
-Alternatively, in a "wide" data format we see modifications to rule 1, where
-each column no longer represents a single variable. Instead, columns can
-represent different levels/values of a variable. For instance, in some data you
-encounter the researchers may have chosen for every survey date to be a
-different column.
-
-These may sound like dramatically different data layouts, but there are some
-tools that make transitions between these layouts much simpler than you might
-think! The gif below shows how these two formats relate to each other, and
-gives you an idea of how we can use R to shift from one format to the other.
-
-![](../fig/tidyr-pivot_wider_longer.gif)
-Long and wide dataframe layouts mainly affect readability. You may find that
-visually you may prefer the "wide" format, since you can see more of the data on
-the screen. However, all of the R functions we have used thus far expect for
-your data to be in a "long" data format. This is because the long format is more
-machine readable and is closer to the formatting of databases.
-
-### Questions which warrant different data formats
-
-In interviews, each row contains the values of variables associated with each
-record (the unit), values such as the village of the respondent, the number
-of household members, or the type of wall their house had. This format allows
-for us to make comparisons across individual surveys, but what if we wanted to
-look at differences in households grouped by different types of housing
-construction materials?
-
-To facilitate this comparison we would need to create a new table where each row
-(the unit) was comprised of values of variables associated with housing material
-(e.g. the `respondent_wall_type`). In practical terms this means the values of
-the wall construction materials in `respondent_wall_type` (e.g. muddaub,
-burntbricks, cement, sunbricks) would become the names of column variables and
-the cells would contain values of `TRUE` or `FALSE`, for whether that house had
-a wall made of that material.
-
-Once we we've created this new table, we can explore the relationship within and
-between villages. The key point here is that we are still following a tidy data
-structure, but we have **reshaped** the data according to the observations of
-interest.
-
-Alternatively, if the interview dates were spread across multiple columns, and
-we were interested in visualizing, within each village, how irrigation
-conflicts have changed over time. This would require for the interview date to
-be included in a single column rather than spread across multiple columns. Thus,
-we would need to transform the column names into values of a variable.
-
-We can do both these of transformations with two `tidyr` functions,
-`pivot_wider()` and `pivot_longer()`.
-
-### Pivoting wider
-
-`pivot_wider()` takes three principal arguments:
-
-1. the data
-2. the *names_from* column variable whose values will become new column names.
-3. the *values_from* column variable whose values will fill the new column
-   variables.
-
-Further arguments include `values_fill` which, if set, fills in missing values
-with the value provided.
-
-Let's use `pivot_wider()` to transform interviews to create new columns for each
-type of wall construction material. We will make use of the pipe operator as
-have done before. Because both the `names_from` and `values_from` parameters
-must come from column values, we will create a dummy column (we'll name it
-`wall_type_logical`) to hold the value `TRUE`, which we will then place into the
-appropriate column that corresponds to the wall construction material for that
-respondent. When using `mutate()` if you give a single value, it will be used
-for all observations in the dataset.
-
-For each row in our newly pivoted table, only one of the newly created wall type
-columns will have a value of `TRUE`, since each house can only be made of one
-wall type. The default value that `pivot_wider` uses to fill the other wall
-types is `NA`.
-
-![](../fig/pivot_long_to_wide.png)
-
-If instead of the default value being `NA`, we wanted these values to be `FALSE`,
-we can insert a default value into the `values_fill` argument. By including
-`values_fill = list(wall_type_logical = FALSE)` inside `pivot_wider()`, we can
-fill the remainder of the wall type columns for that row with the value `FALSE`.
-
-
-
-~~~
-interviews_wide <- interviews %>%
-    mutate(wall_type_logical = TRUE) %>%
-    pivot_wider(names_from = respondent_wall_type,
-                values_from = wall_type_logical,
-                values_fill = list(wall_type_logical = FALSE))
-~~~
-{: .language-r}
-
-
-View the `interviews_wide` dataframe and notice that there is no longer a
-column titled `respondent_wall_type`. This is because there is a default
-parameter in `pivot_wider()` that drops the original column. The values that
-were in that column have now become columns named `muddaub`, `burntbricks`,
-`sunbricks`, and `cement`. You can use `dim(interviews)` and
-`dim(interviews_wide)` to see how the number of columns has changed between
-the two datasets.
-
-### Pivoting longer
-
-The opposing situation could occur if we had been provided with data in the form
-of `interviews_wide`, where the building materials are column names, but we
-wish to treat them as values of a `respondent_wall_type` variable instead.
-
-In this situation we are gathering these columns turning them into a pair
-of new variables. One variable includes the column names as values, and the
-other variable contains the values in each cell previously associated with the
-column names. We will do this in two steps to make this process a bit clearer.
-
-`pivot_longer()` takes four principal arguments:
-
-1. the data
-2. *cols* are the names of the columns we use to fill the a new values variable
-   (or to drop).
-3. the *names_to* column variable we wish to create from the *cols* provided.
-4. the *values_to* column variable we wish to create and fill with values
-associated with the *cols* provided.
-
-To recreate our original dataframe, we will use the following:
-
-1. the data - `interviews_wide`
-2. a list of *cols* (columns) that are to be reshaped; these can be specified
-   using a  `:` if the columns to be reshaped are in one area of the dataframe,
-   or with a vector (`c()`) command if the columns are spread throughout the
-   dataframe.
-3. the *names_to* column will be a character string of the name the column
-   these columns will be collapsed into ("respondent_wall_type").
-4. the *values_to* column will be a character string of the name of the
-   column the values of the collapsed columns will be inserted into
-   ("wall_type_logical"). This column will be populated with values of
-   `TRUE` or `FALSE`.
-
-
-
-~~~
-interviews_long <- interviews_wide %>%
-    pivot_longer(cols = burntbricks:sunbricks,
-                 names_to = "respondent_wall_type",
-                 values_to = "wall_type_logical")
-~~~
-{: .language-r}
-
-
-![](../fig/pivot_wide_to_long.png)
-
-This creates a dataframe with 262 rows (4 rows per
-interview respondent). The four rows for each respondent differ only in the
-value of the "respondent_wall_type" and "wall_type_logical" columns. View the
-data to see what this looks like.
-
-Only one row for each interview respondent is informative--we know that if the
-house walls are made of "sunbrick" they aren't made of any other the other
-materials. Therefore, it would make sense to filter our dataset to only keep
-values where `wall_type_logical` is `TRUE`. Because `wall_type_logical` is
-already either `TRUE` or `FALSE`, when passing the column name to `filter()`,
-it will automatically already only keep rows where this column has the value
-`TRUE`. We can then remove the `wall_type_logical` column.
-
-We do all of these steps together in the next chunk of code:
-
-
-~~~
-interviews_long <- interviews_wide %>%
-    pivot_longer(cols = c(burntbricks, cement, muddaub, sunbricks),
-                 names_to = "respondent_wall_type",
-                 values_to = "wall_type_logical") %>%
-    filter(wall_type_logical) %>%
-    select(-wall_type_logical)
-~~~
-{: .language-r}
-
-View both `interviews_long` and `interviews_wide` and compare their structure.
-
-## Applying `pivot_wider()` to clean our data
-
-Now that we've learned about `pivot_longer()` and `pivot_wider()` we're going to
-put these functions to use to fix a problem with the way that our data is
-structured. In the spreadsheets lesson, we learned that it's best practice to
-have only a single piece of information in each cell of your spreadsheet. In
-this dataset, we have several columns which contain multiple pieces of
-information. For example, the `items_owned` column contains information about
-whether our respondents owned a fridge, a television, etc. To make this data
-easier to analyze, we will split this column and create a new column for each
-item. Each cell in that column will either be `TRUE` or `FALSE` and will
-indicate whether that interview respondent owned that item (similar to what
-we did previously with `wall_type`).
-
-
-~~~
-interviews_items_owned <- interviews %>%
-  separate_rows(items_owned, sep = ";") %>%
-  replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
-    pivot_wider(names_from = items_owned,
-                values_from = items_owned_logical,
-                values_fill = list(items_owned_logical = FALSE))
-
-nrow(interviews_items_owned)
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] 131
-~~~
-{: .output}
-
-There are a couple of new concepts in this code chunk, so let's walk through it
-line by line. First we create a new object (`interviews_items_owned`) based on
-the `interviews` dataframe.
-
-
-~~~
-interviews_items_owned <- interviews %>%
-~~~
-{: .language-r}
-
-Then we use the new function `separate_rows()` from the **`tidyr`** package to
-separate the values of `items_owned` based on the presence of semi-colons (`;`).
-The values of this variable were multiple items separated by semi-colons, so
-this action creates a row for each item listed in a household's possession.
-Thus, we end up with a long format version of the dataset, with multiple rows
-for each respondent. For example, if a respondent has a television and a solar
-panel, that respondent will now have two rows, one with "television" and the
-other with "solar panel" in the `items_owned` column.
-
-
-~~~
-separate_rows(items_owned, sep = ";") %>%
-~~~
-{: .language-r}
-
-You may notice that one of the columns is called `´NA´`. This is because some
-of the respondents did not own any of the items that was in the interviewer's
-list. We can use the `replace_na()` function to change these `NA` values to
-something more meaningful. The `replace_na()` function expects for you to give
-it a `list()` of columns that you would like to replace the `NA` values in,
-and the value that you would like to replace the `NA`s. This ends up looking
-like this:
-
-
-~~~
-replace_na(list(items_owned = "no_listed_items")) %>%
-~~~
-{: .language-r}
-
-Next, we create a new variable named `items_owned_logical`, which has one value
-(`TRUE`) for every row. This makes sense, since each item in every row was owned
-by that household. We are constructing this variable so that when spread the
-`items_owned` across multiple columns, we can fill the values of those columns
-with logical values describing whether the household did (`TRUE`) or didn't
-(`FALSE`) own that particular item.  
-
-
-~~~
-mutate(items_owned_logical = TRUE) %>%
-~~~
-{: .language-r}
-
-Lastly, we use `pivot_wider()` to switch from long format to wide format. This
-creates a new column for each of the unique values in the `items_owned` column,
-and fills those columns with the values of `items_owned_logical`. We also
-declare that for items that are missing, we want to fill those cells with the
-value of `FALSE` instead of `NA`.
-
-
-~~~
-pivot_wider(names_from = items_owned,
-            values_from = items_owned_logical,
-            values_fill = list(items_owned_logical = FALSE))
-~~~
-{: .language-r}
-
-View the `interviews_items_owned` dataframe. It should have
-131 rows (the same number of rows you had originally), but
-extra columns for each item. How many columns were added?
-
-This format of the data allows us to do interesting things, like make a table
-showing the number of respondents in each village who owned a particular item:
-
-
-~~~
-interviews_items_owned %>%
-  filter(bicycle) %>%
-  group_by(village) %>%
-  count(bicycle)
-~~~
-{: .language-r}
-
-
-
-~~~
-# A tibble: 3 × 3
-# Groups:   village [3]
-  village  bicycle     n
-  <chr>    <lgl>   <int>
-1 Chirodzo TRUE       17
-2 God      TRUE       23
-3 Ruaca    TRUE       20
-~~~
-{: .output}
-
-Or below we calculate the average number of items from the list owned by
-respondents in each village. This code uses the `rowSums()` function to count
-the number of `TRUE` values in the `bicycle` to `car` columns for each row,
-hence its name. We then group the data by villages and caluculate the mean
-number of items, so each average is grouped by village.
-
-
-~~~
-interviews_items_owned %>%
-    mutate(number_items = rowSums(select(., bicycle:car))) %>%
-    group_by(village) %>%
-    summarize(mean_items = mean(number_items))
-~~~
-{: .language-r}
-
-
-
-~~~
-# A tibble: 3 × 2
-  village  mean_items
-  <chr>         <dbl>
-1 Chirodzo       4.62
-2 God            4.07
-3 Ruaca          5.63
-~~~
-{: .output}
-
-> ## Exercise
->
-> 1. Create a new dataframe (named `interviews_months_lack_food`) that has one
-> column for each month and records `TRUE` or `FALSE` for whether each interview
-> respondent was lacking food in that month.
->
-> > ## Solution
-> >
-> > 
-> > ~~~
-> > interviews_months_lack_food <- interviews %>%
-> >   separate_rows(months_lack_food, sep = ";") %>%
-> >   mutate(months_lack_food_logical  = TRUE) %>%
-> >   pivot_wider(names_from = months_lack_food,
-> >               values_from = months_lack_food_logical,
-> >               values_fill = list(months_lack_food_logical = FALSE))
-> > ~~~
-> > {: .language-r}
-> {: .solution}
->
-> 2. How many months (on average) were respondents without food if
-> they did belong to an irrigation association? What about if they didn't?
->
-> > ## Solution
-> >
-> > 
-> > ~~~
-> > interviews_months_lack_food %>%
-> >   mutate(number_months = rowSums(select(., Jan:May))) %>%
-> >   group_by(memb_assoc) %>%
-> >   summarize(mean_months = mean(number_months))
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > # A tibble: 3 × 2
-> >   memb_assoc mean_months
-> >   <chr>            <dbl>
-> > 1 no                2   
-> > 2 yes               2.30
-> > 3 <NA>              2.82
-> > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
 
 ## Exporting data
 
@@ -1471,43 +774,20 @@ it. In contrast, our script will generate the contents of the `data_output`
 directory, so even if the files it contains are deleted, we can always
 re-generate them.
 
-In preparation for our next lesson on plotting, we are going to create a version
-of the dataset where each of the columns includes only one data value. To do
-this, we will use `pivot_wider` to expand the `months_lack_food` and
-`items_owned` columns. We will also create a couple of summary columns.
 
-
-
-~~~
-interviews_plotting <- interviews %>%
-  ## pivot wider by items_owned
-  separate_rows(items_owned, sep = ";") %>%
-  ## if there were no items listed, changing NA to no_listed_items
-  replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
-  pivot_wider(names_from = items_owned,
-              values_from = items_owned_logical,
-              values_fill = list(items_owned_logical = FALSE)) %>%
-  ## pivot wider by months_lack_food
-  separate_rows(months_lack_food, sep = ";") %>%
-  mutate(months_lack_food_logical = TRUE) %>%
-  pivot_wider(names_from = months_lack_food,
-              values_from = months_lack_food_logical,
-              values_fill = list(months_lack_food_logical = FALSE)) %>%
-  ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
-  mutate(number_items = rowSums(select(., bicycle:car)))
-~~~
-{: .language-r}
 
 Now we can save this dataframe to our `data_output` directory.
 
 
 ~~~
-write_csv(interviews_plotting, file = "data_output/interviews_plotting.csv")
+write_csv(interviews, file = "data_output/interviews_plotting.csv")
 ~~~
 {: .language-r}
 
 
+~~~
+Error in write_csv(interviews, "../data_output/interviews_plotting.csv"): could not find function "write_csv"
+~~~
+{: .error}
 
 {% include links.md %}

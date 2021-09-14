@@ -116,10 +116,8 @@ recommend if you have any problems installing R and RStudio on your personal com
 this file is: <https://ndownloader.figshare.com/files/11492171>. To download
 from `R`:
 
-```{r eval=TRUE,  message=FALSE, purl=FALSE}
-download.file("https://ndownloader.figshare.com/files/11492171",
-              "data/SAFI_clean.csv", mode = "wb")
-```
+download.file("https://github.com/KUBDatalab/beginning-R/blob/main/data/SAFI_clean.csv", "data/SAFI_clean.csv", mode = "wb")
+
 
 If you have chosen the online version at [Rstudio Cloud](https://rstudio.cloud/) you will have 
 to begin a new project (Click "New Project") before you can run the code above.

@@ -69,32 +69,6 @@ interviews_plotting <- read_csv("/data_output/interviews_plotting.csv")
 ~~~
 {: .language-r}
 
-If you were unable to complete the previous lesson or did not save the data,
-then you can create it now.
-
-
-~~~
-## Not run, but can be used to load in data from previous lesson!
-interviews_plotting <- interviews %>%
-  ## pivot wider by items_owned
-  separate_rows(items_owned, sep = ";") %>%
-  ## if there were no items listed, changing NA to no_listed_items
-  replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
-  pivot_wider(names_from = items_owned, 
-              values_from = items_owned_logical, 
-              values_fill = list(items_owned_logical = FALSE)) %>%
-  ## pivot wider by months_lack_food
-  separate_rows(months_lack_food, sep = ";") %>%
-  mutate(months_lack_food_logical = TRUE) %>%
-  pivot_wider(names_from = months_lack_food, 
-              values_from = months_lack_food_logical, 
-              values_fill = list(months_lack_food_logical = FALSE)) %>%
-  ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
-  mutate(number_items = rowSums(select(., bicycle:car)))
-~~~
-{: .language-r}
 
 ## Scatterplots ## 
 
@@ -130,7 +104,7 @@ plot(interviews_plotting$years_liv, interviews_plotting$number_items,
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
@@ -141,7 +115,7 @@ boxplot(interviews_plotting$rooms~interviews_plotting$respondent_wall_type)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -172,7 +146,7 @@ hist(interviews_plotting$rooms)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
@@ -349,7 +323,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 29.66507
+[1] 5.228076
 ~~~
 {: .output}
 More than double as fast!
