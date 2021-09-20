@@ -272,16 +272,16 @@ dir.create("fig_output")
 ~~~
 {: .language-r}
 
-Go to the Figshare page for this curriculum and download the dataset called
+Begin by downloading the dataset called
 "`SAFI_clean.csv`". The direct download link is:
-<https://ndownloader.figshare.com/files/11492171>. Place this downloaded file in
+<https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv>. Place this downloaded file in
 the `data/` you just created. You can do this directly from R by copying and
 pasting this in your terminal (your instructor can place this chunk of code in
 the Etherpad):
 
 
 ~~~
-download.file("https://ndownloader.figshare.com/files/11492171",
+download.file("https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv",
               "data/SAFI_clean.csv", mode = "wb")
 ~~~
 {: .language-r}
