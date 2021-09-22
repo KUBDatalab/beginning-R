@@ -38,6 +38,13 @@ If not still in the workspace, load the data we saved in the previous lesson.
 
 
 ~~~
+interviews_plotting <- read_csv("../data_output/interviews_plotting.csv")
+~~~
+{: .language-r}
+
+
+
+~~~
 Rows: 131 Columns: 45
 ~~~
 {: .output}
@@ -323,7 +330,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 6.045433
+[1] 6.899963
 ~~~
 {: .output}
 More than double as fast!

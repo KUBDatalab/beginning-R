@@ -2,6 +2,6 @@ if (!dir.exists("data"))
     dir.create("data")
 
 if (! file.exists("data/SAFI_clean.csv")) {
-    download.file("https://ndownloader.figshare.com/files/11492171",
+    download.file("https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv",
                   "data/SAFI_clean.csv", mode = "wb")
 }

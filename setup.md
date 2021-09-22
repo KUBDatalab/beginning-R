@@ -113,7 +113,7 @@ recommend if you have any problems installing R and RStudio on your personal com
   `install.packages("tidyverse")`
 
 * For reference, the lesson uses `SAFI_clean.csv`. The direct download link for
-this file is: <https://ndownloader.figshare.com/files/11492171>. To download
+this file is: <https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv>. To download
 from `R`:
 
 `download.file("https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv", "data/SAFI_clean.csv", mode = "wb")`

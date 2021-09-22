@@ -115,30 +115,10 @@ read as "select columns from ___ to ___."
 ~~~
 # to select columns throughout the dataframe
 select(interviews, village, no_membrs)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in select(interviews, village, no_membrs): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 # to select a series of connected columns
 select(interviews, village:respondent_wall_type)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in select(interviews, village:respondent_wall_type): object 'interviews' not found
-~~~
-{: .error}
 
 To choose rows based on specific criteria, we can use the `filter()` function.
 The argument after the dataframe is the condition we want our final
@@ -154,9 +134,28 @@ filter(interviews, village == "Chirodzo")
 
 
 ~~~
-Error in filter(interviews, village == "Chirodzo"): object 'interviews' not found
+# A tibble: 39 × 45
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+ 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+ 4     34 Chirod… 2016-11-17 00:00:00         8        18 burntbricks          3
+ 5     35 Chirod… 2016-11-17 00:00:00         5        45 muddaub              1
+ 6     36 Chirod… 2016-11-17 00:00:00         6        23 sunbricks            1
+ 7     37 Chirod… 2016-11-17 00:00:00         3         8 burntbricks          1
+ 8     43 Chirod… 2016-11-17 00:00:00         7        29 muddaub              1
+ 9     44 Chirod… 2016-11-17 00:00:00         2         6 muddaub              1
+10     45 Chirod… 2016-11-17 00:00:00         9         7 muddaub              1
+# … with 29 more rows, and 38 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
+#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
+#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
+#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
+#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
+#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
 ~~~
-{: .error}
+{: .output}
 
 We can also specify multiple conditions within the `filter()` function. We can
 combine conditions using either "and" or "or" statements. In an "and" 
@@ -178,9 +177,28 @@ filter(interviews, village == "Chirodzo",
 
 
 ~~~
-Error in filter(interviews, village == "Chirodzo", rooms > 1, no_meals > : object 'interviews' not found
+# A tibble: 10 × 45
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+ 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
+ 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
+ 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
+ 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
+ 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
+ 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
+ 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
+ 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
+10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
+# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
+#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
+#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
+#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
+#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
+#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
 ~~~
-{: .error}
+{: .output}
 
 We can also form "and" statements with the `&` operator instead of commas:
 
@@ -197,9 +215,28 @@ filter(interviews, village == "Chirodzo" &
 
 
 ~~~
-Error in filter(interviews, village == "Chirodzo" & rooms > 1 & no_meals > : object 'interviews' not found
+# A tibble: 10 × 45
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+ 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
+ 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
+ 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
+ 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
+ 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
+ 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
+ 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
+ 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
+10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
+# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
+#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
+#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
+#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
+#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
+#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
 ~~~
-{: .error}
+{: .output}
 
 In an "or" statement, observations must meet *at least one* of the specified conditions. 
 To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
@@ -215,9 +252,28 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
 
 
 ~~~
-Error in filter(interviews, village == "Chirodzo" | village == "Ruaca"): object 'interviews' not found
+# A tibble: 88 × 45
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+ 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+ 4     23 Ruaca   2016-11-21 00:00:00        10        20 burntbricks          4
+ 5     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks          2
+ 6     25 Ruaca   2016-11-21 00:00:00        11         6 burntbricks          3
+ 7     26 Ruaca   2016-11-21 00:00:00         3        20 burntbricks          2
+ 8     27 Ruaca   2016-11-21 00:00:00         7        36 burntbricks          2
+ 9     28 Ruaca   2016-11-21 00:00:00         2         2 muddaub              1
+10     29 Ruaca   2016-11-21 00:00:00         7        10 burntbricks          2
+# … with 78 more rows, and 38 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
+#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
+#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
+#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
+#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
+#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
 ~~~
-{: .error}
+{: .output}
 
 
 ## Pipes
@@ -231,29 +287,9 @@ that as input to the next function, like this:
 
 ~~~
 interviews2 <- filter(interviews, village == "Chirodzo")
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in filter(interviews, village == "Chirodzo"): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews_ch <- select(interviews2, village:respondent_wall_type)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in select(interviews2, village:respondent_wall_type): object 'interviews2' not found
-~~~
-{: .error}
 
 This is readable, but can clutter up your workspace with lots of objects that
 you have to name individually. With multiple steps, that can be hard to keep
@@ -267,13 +303,6 @@ interviews_ch <- select(filter(interviews, village == "Chirodzo"),
                          village:respondent_wall_type)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in filter(interviews, village == "Chirodzo"): object 'interviews' not found
-~~~
-{: .error}
 
 This is handy, but can be difficult to read if too many functions are nested, as
 R evaluates the expression from the inside out (in this case, filtering, then
@@ -298,9 +327,22 @@ interviews %>%
 
 
 ~~~
-Error in filter(., village == "Chirodzo"): object 'interviews' not found
+# A tibble: 39 × 5
+   village  interview_date      no_membrs years_liv respondent_wall_type
+   <chr>    <dttm>                  <dbl>     <dbl> <chr>               
+ 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
+ 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
+ 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
+ 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
+ 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
+ 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
+ 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
+ 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
+ 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
+10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+# … with 29 more rows
 ~~~
-{: .error}
+{: .output}
 
 In the above code, we use the pipe to send the `interviews` dataset first
 through `filter()` to keep rows where `village` is "Chirodzo", then through
@@ -324,19 +366,7 @@ can assign it a new name:
 interviews_ch <- interviews %>%
     filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in filter(., village == "Chirodzo"): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews_ch
 ~~~
 {: .language-r}
@@ -344,9 +374,22 @@ interviews_ch
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews_ch' not found
+# A tibble: 39 × 5
+   village  interview_date      no_membrs years_liv respondent_wall_type
+   <chr>    <dttm>                  <dbl>     <dbl> <chr>               
+ 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
+ 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
+ 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
+ 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
+ 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
+ 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
+ 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
+ 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
+ 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
+10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+# … with 29 more rows
 ~~~
-{: .error}
+{: .output}
 
 Note that the final dataframe (`interviews_ch`) is the leftmost part of this
 expression.
@@ -371,9 +414,22 @@ expression.
 > > 
 > > 
 > > ~~~
-> > Error in filter(., memb_assoc == "yes"): object 'interviews' not found
+> > # A tibble: 33 × 3
+> >    affect_conflicts liv_count no_meals
+> >    <chr>                <dbl>    <dbl>
+> >  1 once                     3        2
+> >  2 never                    2        2
+> >  3 never                    2        3
+> >  4 once                     3        2
+> >  5 frequently               1        3
+> >  6 more_once                5        2
+> >  7 more_once                3        2
+> >  8 more_once                2        3
+> >  9 once                     3        3
+> > 10 never                    3        3
+> > # … with 23 more rows
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
@@ -396,9 +452,28 @@ interviews %>%
 
 
 ~~~
-Error in mutate(., people_per_room = no_membrs/rooms): object 'interviews' not found
+# A tibble: 131 × 46
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
+ 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
+ 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
+ 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
+ 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
+ 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
+ 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
+ 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+# … with 121 more rows, and 39 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
+#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
+#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
+#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
+#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
+#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
 ~~~
-{: .error}
+{: .output}
 
 We may be interested in investigating whether being a member of an
 irrigation association had any effect on the ratio of household members
@@ -420,9 +495,28 @@ interviews %>%
 
 
 ~~~
-Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
+# A tibble: 131 × 46
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
+ 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
+ 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
+ 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
+ 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
+ 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
+ 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
+ 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+# … with 121 more rows, and 39 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
+#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
+#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
+#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
+#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
+#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
 ~~~
-{: .error}
+{: .output}
 
 The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
 returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol
@@ -451,13 +545,6 @@ not** missing.
 > >     select(village, total_meals)
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in mutate(., total_meals = no_membrs * no_meals): object 'interviews' not found
-> > ~~~
-> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -488,9 +575,14 @@ interviews %>%
 
 
 ~~~
-Error in group_by(., village): object 'interviews' not found
+# A tibble: 3 × 2
+  village  mean_no_membrs
+  <chr>             <dbl>
+1 Chirodzo           7.08
+2 God                6.86
+3 Ruaca              7.57
 ~~~
-{: .error}
+{: .output}
 
 You may also have noticed that the output from these calls doesn't run off the
 screen anymore. It's one of the advantages of `tbl_df` over dataframe.
@@ -508,9 +600,28 @@ interviews %>%
 
 
 ~~~
-Error in group_by(., village, memb_assoc): object 'interviews' not found
+`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 9 × 3
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs
+  <chr>    <chr>               <dbl>
+1 Chirodzo NA                   5.08
+2 Chirodzo no                   8.06
+3 Chirodzo yes                  7.82
+4 God      NA                   6   
+5 God      no                   7.13
+6 God      yes                  8   
+7 Ruaca    NA                   6.22
+8 Ruaca    no                   7.18
+9 Ruaca    yes                  9.5 
+~~~
+{: .output}
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 `ungroup` function:
@@ -527,9 +638,27 @@ interviews %>%
 
 
 ~~~
-Error in group_by(., village, memb_assoc): object 'interviews' not found
+`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 9 × 3
+  village  memb_assoc mean_no_membrs
+  <chr>    <chr>               <dbl>
+1 Chirodzo NA                   5.08
+2 Chirodzo no                   8.06
+3 Chirodzo yes                  7.82
+4 God      NA                   6   
+5 God      no                   7.13
+6 God      yes                  8   
+7 Ruaca    NA                   6.22
+8 Ruaca    no                   7.18
+9 Ruaca    yes                  9.5 
+~~~
+{: .output}
 
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
@@ -548,9 +677,28 @@ interviews %>%
 
 
 ~~~
-Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
+`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 9 × 3
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs
+  <chr>    <chr>               <dbl>
+1 Chirodzo NA                   5.08
+2 Chirodzo no                   8.06
+3 Chirodzo yes                  7.82
+4 God      NA                   6   
+5 God      no                   7.13
+6 God      yes                  8   
+7 Ruaca    NA                   6.22
+8 Ruaca    no                   7.18
+9 Ruaca    yes                  9.5 
+~~~
+{: .output}
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
@@ -570,9 +718,28 @@ interviews %>%
 
 
 ~~~
-Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
+`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 9 × 4
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs min_membrs
+  <chr>    <chr>               <dbl>      <dbl>
+1 Chirodzo NA                   5.08          2
+2 Chirodzo no                   8.06          4
+3 Chirodzo yes                  7.82          2
+4 God      NA                   6             3
+5 God      no                   7.13          3
+6 God      yes                  8             5
+7 Ruaca    NA                   6.22          3
+8 Ruaca    no                   7.18          2
+9 Ruaca    yes                  9.5           5
+~~~
+{: .output}
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
 For instance, we can sort on `min_membrs` to put the group with the smallest
@@ -593,9 +760,28 @@ interviews %>%
 
 
 ~~~
-Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
+`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 9 × 4
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs min_membrs
+  <chr>    <chr>               <dbl>      <dbl>
+1 Chirodzo NA                   5.08          2
+2 Chirodzo yes                  7.82          2
+3 Ruaca    no                   7.18          2
+4 God      NA                   6             3
+5 God      no                   7.13          3
+6 Ruaca    NA                   6.22          3
+7 Chirodzo no                   8.06          4
+8 God      yes                  8             5
+9 Ruaca    yes                  9.5           5
+~~~
+{: .output}
 
 To sort in descending order, we need to add the `desc()` function. If we want to
 sort the results by decreasing order of minimum household size:
@@ -614,9 +800,28 @@ interviews %>%
 
 
 ~~~
-Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
+`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 9 × 4
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs min_membrs
+  <chr>    <chr>               <dbl>      <dbl>
+1 God      yes                  8             5
+2 Ruaca    yes                  9.5           5
+3 Chirodzo no                   8.06          4
+4 God      NA                   6             3
+5 God      no                   7.13          3
+6 Ruaca    NA                   6.22          3
+7 Chirodzo NA                   5.08          2
+8 Chirodzo yes                  7.82          2
+9 Ruaca    no                   7.18          2
+~~~
+{: .output}
 
 #### Counting
 
@@ -635,9 +840,14 @@ interviews %>%
 
 
 ~~~
-Error in count(., village): object 'interviews' not found
+# A tibble: 3 × 2
+  village      n
+  <chr>    <int>
+1 Chirodzo    39
+2 God         43
+3 Ruaca       49
 ~~~
-{: .error}
+{: .output}
 
 For convenience, `count()` provides the `sort` argument to get results in
 decreasing order:
@@ -652,9 +862,14 @@ interviews %>%
 
 
 ~~~
-Error in count(., village, sort = TRUE): object 'interviews' not found
+# A tibble: 3 × 2
+  village      n
+  <chr>    <int>
+1 Ruaca       49
+2 God         43
+3 Chirodzo    39
 ~~~
-{: .error}
+{: .output}
 
 > ## Exercise
 >
@@ -674,9 +889,13 @@ Error in count(., village, sort = TRUE): object 'interviews' not found
 > > 
 > > 
 > > ~~~
-> > Error in count(., no_meals): object 'interviews' not found
+> > # A tibble: 2 × 2
+> >   no_meals     n
+> >      <dbl> <int>
+> > 1        2    52
+> > 2        3    79
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 >
 > Use `group_by()` and `summarize()` to find the mean, min, and max
@@ -701,9 +920,14 @@ Error in count(., village, sort = TRUE): object 'interviews' not found
 > > 
 > > 
 > > ~~~
-> > Error in group_by(., village): object 'interviews' not found
+> > # A tibble: 3 × 5
+> >   village  mean_no_membrs min_no_membrs max_no_membrs     n
+> >   <chr>             <dbl>         <dbl>         <dbl> <int>
+> > 1 Chirodzo           7.08             2            12    39
+> > 2 God                6.86             3            15    43
+> > 3 Ruaca              7.57             2            19    49
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 >
 > What was the largest household interviewed in each month?
@@ -749,9 +973,24 @@ Error in count(., village, sort = TRUE): object 'interviews' not found
 > > 
 > > 
 > > ~~~
-> > Error in mutate(., month = month(interview_date), day = day(interview_date), : object 'interviews' not found
+> > `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
 > > ~~~
-> > {: .error}
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 5 × 3
+> > # Groups:   year [2]
+> >    year month max_no_membrs
+> >   <dbl> <dbl>         <dbl>
+> > 1  2016    11            19
+> > 2  2016    12            12
+> > 3  2017     4            17
+> > 4  2017     5            15
+> > 5  2017     6            15
+> > ~~~
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
@@ -785,9 +1024,5 @@ write_csv(interviews, file = "data_output/interviews_plotting.csv")
 {: .language-r}
 
 
-~~~
-Error in write_csv(interviews, "../data_output/interviews_plotting.csv"): could not find function "write_csv"
-~~~
-{: .error}
 
 {% include links.md %}
