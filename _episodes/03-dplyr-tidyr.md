@@ -121,7 +121,7 @@ select(interviews, village, no_membrs)
 
 
 ~~~
-Error in select(interviews, village, no_membrs): could not find function "select"
+Error in select(interviews, village, no_membrs): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -136,7 +136,7 @@ select(interviews, village:respondent_wall_type)
 
 
 ~~~
-Error in select(interviews, village:respondent_wall_type): could not find function "select"
+Error in select(interviews, village:respondent_wall_type): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -154,7 +154,7 @@ filter(interviews, village == "Chirodzo")
 
 
 ~~~
-Error in as.ts(x): object 'interviews' not found
+Error in filter(interviews, village == "Chirodzo"): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -178,7 +178,7 @@ filter(interviews, village == "Chirodzo",
 
 
 ~~~
-Error in match.arg(method): object 'rooms' not found
+Error in filter(interviews, village == "Chirodzo", rooms > 1, no_meals > : object 'interviews' not found
 ~~~
 {: .error}
 
@@ -197,7 +197,7 @@ filter(interviews, village == "Chirodzo" &
 
 
 ~~~
-Error in as.ts(x): object 'interviews' not found
+Error in filter(interviews, village == "Chirodzo" & rooms > 1 & no_meals > : object 'interviews' not found
 ~~~
 {: .error}
 
@@ -215,7 +215,7 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
 
 
 ~~~
-Error in as.ts(x): object 'interviews' not found
+Error in filter(interviews, village == "Chirodzo" | village == "Ruaca"): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -237,7 +237,7 @@ interviews2 <- filter(interviews, village == "Chirodzo")
 
 
 ~~~
-Error in as.ts(x): object 'interviews' not found
+Error in filter(interviews, village == "Chirodzo"): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -251,7 +251,7 @@ interviews_ch <- select(interviews2, village:respondent_wall_type)
 
 
 ~~~
-Error in select(interviews2, village:respondent_wall_type): could not find function "select"
+Error in select(interviews2, village:respondent_wall_type): object 'interviews2' not found
 ~~~
 {: .error}
 
@@ -271,7 +271,7 @@ interviews_ch <- select(filter(interviews, village == "Chirodzo"),
 
 
 ~~~
-Error in select(filter(interviews, village == "Chirodzo"), village:respondent_wall_type): could not find function "select"
+Error in filter(interviews, village == "Chirodzo"): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -298,7 +298,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(village == "Chirodzo") %>% select(village:respondent_wall_type): could not find function "%>%"
+Error in filter(., village == "Chirodzo"): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -330,7 +330,7 @@ interviews_ch <- interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(village == "Chirodzo") %>% select(village:respondent_wall_type): could not find function "%>%"
+Error in filter(., village == "Chirodzo"): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -371,7 +371,7 @@ expression.
 > > 
 > > 
 > > ~~~
-> > Error in interviews %>% filter(memb_assoc == "yes") %>% select(affect_conflicts, : could not find function "%>%"
+> > Error in filter(., memb_assoc == "yes"): object 'interviews' not found
 > > ~~~
 > > {: .error}
 > {: .solution}
@@ -396,7 +396,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% mutate(people_per_room = no_membrs/rooms): could not find function "%>%"
+Error in mutate(., people_per_room = no_membrs/rooms): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -420,7 +420,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(!is.na(memb_assoc)) %>% mutate(people_per_room = no_membrs/rooms): could not find function "%>%"
+Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -455,7 +455,7 @@ not** missing.
 > > 
 > > 
 > > ~~~
-> > Error in interviews %>% mutate(total_meals = no_membrs * no_meals) %>% : could not find function "%>%"
+> > Error in mutate(., total_meals = no_membrs * no_meals): object 'interviews' not found
 > > ~~~
 > > {: .error}
 > {: .solution}
@@ -488,7 +488,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% group_by(village) %>% summarize(mean_no_membrs = mean(no_membrs)): could not find function "%>%"
+Error in group_by(., village): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -508,7 +508,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% group_by(village, memb_assoc) %>% summarize(mean_no_membrs = mean(no_membrs)): could not find function "%>%"
+Error in group_by(., village, memb_assoc): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -527,7 +527,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% group_by(village, memb_assoc) %>% summarize(mean_no_membrs = mean(no_membrs)) %>% : could not find function "%>%"
+Error in group_by(., village, memb_assoc): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -548,7 +548,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
+Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -570,7 +570,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
+Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -593,7 +593,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
+Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -614,7 +614,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% filter(!is.na(memb_assoc)) %>% group_by(village, : could not find function "%>%"
+Error in filter(., !is.na(memb_assoc)): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -635,7 +635,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% count(village): could not find function "%>%"
+Error in count(., village): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -652,7 +652,7 @@ interviews %>%
 
 
 ~~~
-Error in interviews %>% count(village, sort = TRUE): could not find function "%>%"
+Error in count(., village, sort = TRUE): object 'interviews' not found
 ~~~
 {: .error}
 
@@ -674,7 +674,7 @@ Error in interviews %>% count(village, sort = TRUE): could not find function "%>
 > > 
 > > 
 > > ~~~
-> > Error in interviews %>% count(no_meals): could not find function "%>%"
+> > Error in count(., no_meals): object 'interviews' not found
 > > ~~~
 > > {: .error}
 > {: .solution}
@@ -701,7 +701,7 @@ Error in interviews %>% count(village, sort = TRUE): could not find function "%>
 > > 
 > > 
 > > ~~~
-> > Error in interviews %>% group_by(village) %>% summarize(mean_no_membrs = mean(no_membrs), : could not find function "%>%"
+> > Error in group_by(., village): object 'interviews' not found
 > > ~~~
 > > {: .error}
 > {: .solution}
@@ -749,7 +749,7 @@ Error in interviews %>% count(village, sort = TRUE): could not find function "%>
 > > 
 > > 
 > > ~~~
-> > Error in interviews %>% mutate(month = month(interview_date), day = day(interview_date), : could not find function "%>%"
+> > Error in mutate(., month = month(interview_date), day = day(interview_date), : object 'interviews' not found
 > > ~~~
 > > {: .error}
 > {: .solution}
