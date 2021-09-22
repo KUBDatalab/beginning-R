@@ -42,6 +42,7 @@ source: Rmd
 source("../bin/chunk-options.R")
 knitr_fig_path("03-")
 source("../bin/download_data.R")
+library(dplyr)
 ```
 
 **`dplyr`** is a package for making tabular data wrangling easier by using a
