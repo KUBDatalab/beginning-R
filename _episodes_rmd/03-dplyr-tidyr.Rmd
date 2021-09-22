@@ -43,6 +43,7 @@ source("../bin/chunk-options.R")
 knitr_fig_path("03-")
 source("../bin/download_data.R")
 library(dplyr)
+library(readr)
 interviews <- read_csv("../data/SAFI_clean.csv", na = "NULL")
 ```
 
