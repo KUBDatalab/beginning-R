@@ -600,7 +600,8 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -638,7 +639,8 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -677,7 +679,8 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -718,7 +721,8 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -760,7 +764,8 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -800,7 +805,8 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the `.groups` argument.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
 {: .output}
 
@@ -973,7 +979,8 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
+> > `summarise()` has grouped output by 'year'. You can override using the `.groups`
+> > argument.
 > > ~~~
 > > {: .output}
 > > 
