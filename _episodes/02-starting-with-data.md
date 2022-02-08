@@ -62,16 +62,8 @@ represent:
 | village | Village name |
 | interview_date | Date of interview |
 | no_membrs | How many members in the household? |
-| years_liv | How many years have you been living in this village or neighboring village? |
 | respondent_wall_type | What type of walls does their house have (from list) |
-| rooms | How many rooms in the main house are used for sleeping? |
-| memb_assoc | Are you a member of an irrigation association? |
-| affect_conflicts | Have you been affected by conflicts with other irrigators in the area? |
-| liv_count | Number of livestock owned. |
-| items_owned | Which of the following items are owned by the household? (list) |
 | no_meals | How many meals do people in your household normally eat in a day? |
-| months_lack_food | Indicate which months, In the last 12 months have you faced a situation when you did not have enough food to feed the household? |
-| instanceID | Unique identifier for the form data submission |
 
 
 ## Importing data
@@ -141,26 +133,20 @@ interviews
 
 
 ~~~
-# A tibble: 131 × 45
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 38 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
-#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
-#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
-#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
-#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
-#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
+# A tibble: 131 × 6
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      1 God      2016-11-17 00:00:00         3 muddaub                     2
+ 2      1 God      2016-11-17 00:00:00         7 muddaub                     2
+ 3      3 God      2016-11-17 00:00:00        10 burntbricks                 2
+ 4      4 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 5      5 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 6      6 God      2016-11-17 00:00:00         3 muddaub                     2
+ 7      7 God      2016-11-17 00:00:00         6 muddaub                     3
+ 8      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
+ 9      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+# … with 121 more rows
 ~~~
 {: .output}
 
@@ -290,9 +276,9 @@ interviews[1, 6]
 
 ~~~
 # A tibble: 1 × 1
-  respondent_wall_type
-  <chr>               
-1 muddaub             
+  no_meals
+     <dbl>
+1        2
 ~~~
 {: .output}
 
@@ -357,14 +343,12 @@ interviews[1:3, 7]
 
 
 ~~~
-# A tibble: 3 × 1
-  rooms
-  <dbl>
-1     1
-2     1
-3     1
+Error in `stop_subscript()`:
+! Can't subset columns that don't exist.
+✖ Location 7 doesn't exist.
+ℹ There are only 6 columns.
 ~~~
-{: .output}
+{: .error}
 
 
 
@@ -377,17 +361,10 @@ interviews[3, ]
 
 
 ~~~
-# A tibble: 1 × 45
-  key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
-   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
-1      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
-# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
-#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
-#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
-#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
-#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
-#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
+# A tibble: 1 × 6
+  key_ID village interview_date      no_membrs respondent_wall_type no_meals
+   <dbl> <chr>   <dttm>                  <dbl> <chr>                   <dbl>
+1      3 God     2016-11-17 00:00:00        10 burntbricks                 2
 ~~~
 {: .output}
 
@@ -413,26 +390,20 @@ interviews[, -1]          # The whole tibble, except the first column
 
 
 ~~~
-# A tibble: 131 × 44
-   village  interview_date      no_membrs years_liv respondent_wall_type rooms
-   <chr>    <dttm>                  <dbl>     <dbl> <chr>                <dbl>
- 1 God      2016-11-17 00:00:00         3         4 muddaub                  1
- 2 God      2016-11-17 00:00:00         7         9 muddaub                  1
- 3 God      2016-11-17 00:00:00        10        15 burntbricks              1
- 4 God      2016-11-17 00:00:00         7         6 burntbricks              1
- 5 God      2016-11-17 00:00:00         7        40 burntbricks              1
- 6 God      2016-11-17 00:00:00         3         3 muddaub                  1
- 7 God      2016-11-17 00:00:00         6        38 muddaub                  1
- 8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks              3
- 9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks              1
-10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks              5
-# … with 121 more rows, and 38 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
-#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
-#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
-#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
-#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
-#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
+# A tibble: 131 × 5
+   village  interview_date      no_membrs respondent_wall_type no_meals
+   <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1 God      2016-11-17 00:00:00         3 muddaub                     2
+ 2 God      2016-11-17 00:00:00         7 muddaub                     2
+ 3 God      2016-11-17 00:00:00        10 burntbricks                 2
+ 4 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 5 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 6 God      2016-11-17 00:00:00         3 muddaub                     2
+ 7 God      2016-11-17 00:00:00         6 muddaub                     3
+ 8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
+ 9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+# … with 121 more rows
 ~~~
 {: .output}
 
@@ -446,22 +417,15 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 
 
 ~~~
-# A tibble: 6 × 45
-  key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
-   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
-1      1 God     2016-11-17 00:00:00         3         4 muddaub               1
-2      1 God     2016-11-17 00:00:00         7         9 muddaub               1
-3      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
-4      4 God     2016-11-17 00:00:00         7         6 burntbricks           1
-5      5 God     2016-11-17 00:00:00         7        40 burntbricks           1
-6      6 God     2016-11-17 00:00:00         3         3 muddaub               1
-# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
-#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
-#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
-#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
-#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
-#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
+# A tibble: 6 × 6
+  key_ID village interview_date      no_membrs respondent_wall_type no_meals
+   <dbl> <chr>   <dttm>                  <dbl> <chr>                   <dbl>
+1      1 God     2016-11-17 00:00:00         3 muddaub                     2
+2      1 God     2016-11-17 00:00:00         7 muddaub                     2
+3      3 God     2016-11-17 00:00:00        10 burntbricks                 2
+4      4 God     2016-11-17 00:00:00         7 burntbricks                 2
+5      5 God     2016-11-17 00:00:00         7 burntbricks                 2
+6      6 God     2016-11-17 00:00:00         3 muddaub                     2
 ~~~
 {: .output}
 

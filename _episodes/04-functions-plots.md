@@ -45,13 +45,12 @@ interviews_plotting <- read_csv("../data_output/interviews_plotting.csv")
 
 
 ~~~
-Rows: 131 Columns: 45
+Rows: 131 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr   (5): village, respondent_wall_type, memb_assoc, affect_conflicts, inst...
-dbl   (8): key_ID, no_membrs, years_liv, rooms, liv_count, no_meals, number_...
-lgl  (31): bicycle, television, solar_panel, table, cow_cart, radio, cow_plo...
-dttm  (1): interview_date
+chr  (2): village, respondent_wall_type
+dbl  (3): key_ID, no_membrs, no_meals
+dttm (1): interview_date
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -81,6 +80,55 @@ plot(interviews_plotting$years_liv, interviews_plotting$number_items)
 ~~~
 {: .language-r}
 
+
+
+~~~
+Warning: Unknown or uninitialised column: `years_liv`.
+~~~
+{: .warning}
+
+
+
+~~~
+Warning: Unknown or uninitialised column: `number_items`.
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in min(x): no non-missing arguments to min; returning Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in max(x): no non-missing arguments to max; returning -Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in min(x): no non-missing arguments to min; returning Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in max(x): no non-missing arguments to max; returning -Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Error in plot.window(...): need finite 'xlim' values
+~~~
+{: .error}
+
 <img src="../fig/rmd-04-first-scatterplot-1.png" title="plot of chunk first-scatterplot" alt="plot of chunk first-scatterplot" width="612" style="display: block; margin: auto;" />
 We are plotting the number of items owned vs. the number of years lived in the 
 village. A hypothesis could be, that the respondents accumulate more items 
@@ -99,6 +147,55 @@ plot(interviews_plotting$years_liv, interviews_plotting$number_items,
 ~~~
 {: .language-r}
 
+
+
+~~~
+Warning: Unknown or uninitialised column: `years_liv`.
+~~~
+{: .warning}
+
+
+
+~~~
+Warning: Unknown or uninitialised column: `number_items`.
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in min(x): no non-missing arguments to min; returning Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in max(x): no non-missing arguments to max; returning -Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in min(x): no non-missing arguments to min; returning Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Warning in max(x): no non-missing arguments to max; returning -Inf
+~~~
+{: .warning}
+
+
+
+~~~
+Error in plot.window(...): need finite 'xlim' values
+~~~
+{: .error}
+
 <img src="../fig/rmd-04-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
 
 
@@ -110,7 +207,19 @@ boxplot(interviews_plotting$rooms~interviews_plotting$respondent_wall_type)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
+
+
+~~~
+Warning: Unknown or uninitialised column: `rooms`.
+~~~
+{: .warning}
+
+
+
+~~~
+Error in stats::model.frame.default(formula = interviews_plotting$rooms ~ : invalid type (NULL) for variable 'interviews_plotting$rooms'
+~~~
+{: .error}
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -141,7 +250,19 @@ hist(interviews_plotting$rooms)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
+
+
+~~~
+Warning: Unknown or uninitialised column: `rooms`.
+~~~
+{: .warning}
+
+
+
+~~~
+Error in hist.default(interviews_plotting$rooms): 'x' must be numeric
+~~~
+{: .error}
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
@@ -318,7 +439,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 7.281637
+[1] 5.308744
 ~~~
 {: .output}
 More than double as fast!

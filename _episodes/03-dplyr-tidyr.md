@@ -134,26 +134,20 @@ filter(interviews, village == "Chirodzo")
 
 
 ~~~
-# A tibble: 39 × 45
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
- 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 4     34 Chirod… 2016-11-17 00:00:00         8        18 burntbricks          3
- 5     35 Chirod… 2016-11-17 00:00:00         5        45 muddaub              1
- 6     36 Chirod… 2016-11-17 00:00:00         6        23 sunbricks            1
- 7     37 Chirod… 2016-11-17 00:00:00         3         8 burntbricks          1
- 8     43 Chirod… 2016-11-17 00:00:00         7        29 muddaub              1
- 9     44 Chirod… 2016-11-17 00:00:00         2         6 muddaub              1
-10     45 Chirod… 2016-11-17 00:00:00         9         7 muddaub              1
-# … with 29 more rows, and 38 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
-#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
-#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
-#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
-#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
-#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
+# A tibble: 39 × 6
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
+ 2      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+ 3     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+ 4     34 Chirodzo 2016-11-17 00:00:00         8 burntbricks                 2
+ 5     35 Chirodzo 2016-11-17 00:00:00         5 muddaub                     3
+ 6     36 Chirodzo 2016-11-17 00:00:00         6 sunbricks                   3
+ 7     37 Chirodzo 2016-11-17 00:00:00         3 burntbricks                 3
+ 8     43 Chirodzo 2016-11-17 00:00:00         7 muddaub                     2
+ 9     44 Chirodzo 2016-11-17 00:00:00         2 muddaub                     2
+10     45 Chirodzo 2016-11-17 00:00:00         9 muddaub                     3
+# … with 29 more rows
 ~~~
 {: .output}
 
@@ -177,28 +171,12 @@ filter(interviews, village == "Chirodzo",
 
 
 ~~~
-# A tibble: 10 × 45
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
- 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
- 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
- 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
- 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
- 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
- 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
- 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
-10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
-# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
-#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
-#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
-#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
-#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
-#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
+Error in `filter()`:
+! Problem while computing `..2 = rooms > 1`.
+Caused by error:
+! object 'rooms' not found
 ~~~
-{: .output}
+{: .error}
 
 We can also form "and" statements with the `&` operator instead of commas:
 
@@ -215,28 +193,13 @@ filter(interviews, village == "Chirodzo" &
 
 
 ~~~
-# A tibble: 10 × 45
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
- 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
- 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
- 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
- 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
- 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
- 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
- 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
-10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
-# … with 38 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, no_meals <dbl>, instanceID <chr>, bicycle <lgl>,
-#   television <lgl>, solar_panel <lgl>, table <lgl>, cow_cart <lgl>,
-#   radio <lgl>, cow_plough <lgl>, solar_torch <lgl>, mobile_phone <lgl>,
-#   motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>, electricity <lgl>,
-#   sofa_set <lgl>, lorry <lgl>, sterio <lgl>, computer <lgl>, car <lgl>,
-#   Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, Dec <lgl>, Feb <lgl>, …
+Error in `filter()`:
+! Problem while computing `..1 = village == "Chirodzo" & rooms > 1 &
+  no_meals > 2`.
+Caused by error:
+! object 'rooms' not found
 ~~~
-{: .output}
+{: .error}
 
 In an "or" statement, observations must meet *at least one* of the specified conditions. 
 To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
@@ -252,26 +215,20 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
 
 
 ~~~
-# A tibble: 88 × 45
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
- 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
- 4     23 Ruaca   2016-11-21 00:00:00        10        20 burntbricks          4
- 5     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks          2
- 6     25 Ruaca   2016-11-21 00:00:00        11         6 burntbricks          3
- 7     26 Ruaca   2016-11-21 00:00:00         3        20 burntbricks          2
- 8     27 Ruaca   2016-11-21 00:00:00         7        36 burntbricks          2
- 9     28 Ruaca   2016-11-21 00:00:00         2         2 muddaub              1
-10     29 Ruaca   2016-11-21 00:00:00         7        10 burntbricks          2
-# … with 78 more rows, and 38 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
-#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
-#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
-#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
-#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
-#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
+# A tibble: 88 × 6
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
+ 2      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+ 3     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+ 4     23 Ruaca    2016-11-21 00:00:00        10 burntbricks                 3
+ 5     24 Ruaca    2016-11-21 00:00:00         6 burntbricks                 2
+ 6     25 Ruaca    2016-11-21 00:00:00        11 burntbricks                 2
+ 7     26 Ruaca    2016-11-21 00:00:00         3 burntbricks                 2
+ 8     27 Ruaca    2016-11-21 00:00:00         7 burntbricks                 3
+ 9     28 Ruaca    2016-11-21 00:00:00         2 muddaub                     3
+10     29 Ruaca    2016-11-21 00:00:00         7 burntbricks                 3
+# … with 78 more rows
 ~~~
 {: .output}
 
@@ -327,19 +284,19 @@ interviews %>%
 
 
 ~~~
-# A tibble: 39 × 5
-   village  interview_date      no_membrs years_liv respondent_wall_type
-   <chr>    <dttm>                  <dbl>     <dbl> <chr>               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+# A tibble: 39 × 4
+   village  interview_date      no_membrs respondent_wall_type
+   <chr>    <dttm>                  <dbl> <chr>               
+ 1 Chirodzo 2016-11-16 00:00:00        12 burntbricks         
+ 2 Chirodzo 2016-11-16 00:00:00         8 burntbricks         
+ 3 Chirodzo 2016-12-16 00:00:00        12 burntbricks         
+ 4 Chirodzo 2016-11-17 00:00:00         8 burntbricks         
+ 5 Chirodzo 2016-11-17 00:00:00         5 muddaub             
+ 6 Chirodzo 2016-11-17 00:00:00         6 sunbricks           
+ 7 Chirodzo 2016-11-17 00:00:00         3 burntbricks         
+ 8 Chirodzo 2016-11-17 00:00:00         7 muddaub             
+ 9 Chirodzo 2016-11-17 00:00:00         2 muddaub             
+10 Chirodzo 2016-11-17 00:00:00         9 muddaub             
 # … with 29 more rows
 ~~~
 {: .output}
@@ -374,19 +331,19 @@ interviews_ch
 
 
 ~~~
-# A tibble: 39 × 5
-   village  interview_date      no_membrs years_liv respondent_wall_type
-   <chr>    <dttm>                  <dbl>     <dbl> <chr>               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+# A tibble: 39 × 4
+   village  interview_date      no_membrs respondent_wall_type
+   <chr>    <dttm>                  <dbl> <chr>               
+ 1 Chirodzo 2016-11-16 00:00:00        12 burntbricks         
+ 2 Chirodzo 2016-11-16 00:00:00         8 burntbricks         
+ 3 Chirodzo 2016-12-16 00:00:00        12 burntbricks         
+ 4 Chirodzo 2016-11-17 00:00:00         8 burntbricks         
+ 5 Chirodzo 2016-11-17 00:00:00         5 muddaub             
+ 6 Chirodzo 2016-11-17 00:00:00         6 sunbricks           
+ 7 Chirodzo 2016-11-17 00:00:00         3 burntbricks         
+ 8 Chirodzo 2016-11-17 00:00:00         7 muddaub             
+ 9 Chirodzo 2016-11-17 00:00:00         2 muddaub             
+10 Chirodzo 2016-11-17 00:00:00         9 muddaub             
 # … with 29 more rows
 ~~~
 {: .output}
@@ -414,22 +371,12 @@ expression.
 > > 
 > > 
 > > ~~~
-> > # A tibble: 33 × 3
-> >    affect_conflicts liv_count no_meals
-> >    <chr>                <dbl>    <dbl>
-> >  1 once                     3        2
-> >  2 never                    2        2
-> >  3 never                    2        3
-> >  4 once                     3        2
-> >  5 frequently               1        3
-> >  6 more_once                5        2
-> >  7 more_once                3        2
-> >  8 more_once                2        3
-> >  9 once                     3        3
-> > 10 never                    3        3
-> > # … with 23 more rows
+> > Error in `filter()`:
+> > ! Problem while computing `..1 = memb_assoc == "yes"`.
+> > Caused by error:
+> > ! object 'memb_assoc' not found
 > > ~~~
-> > {: .output}
+> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -452,28 +399,12 @@ interviews %>%
 
 
 ~~~
-# A tibble: 131 × 46
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 39 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
-#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
-#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
-#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
-#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
-#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
+Error in `mutate()`:
+! Problem while computing `people_per_room = no_membrs/rooms`.
+Caused by error:
+! object 'rooms' not found
 ~~~
-{: .output}
+{: .error}
 
 We may be interested in investigating whether being a member of an
 irrigation association had any effect on the ratio of household members
@@ -495,28 +426,12 @@ interviews %>%
 
 
 ~~~
-# A tibble: 131 × 46
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 39 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, no_meals <dbl>, instanceID <chr>,
-#   bicycle <lgl>, television <lgl>, solar_panel <lgl>, table <lgl>,
-#   cow_cart <lgl>, radio <lgl>, cow_plough <lgl>, solar_torch <lgl>,
-#   mobile_phone <lgl>, motorcyle <lgl>, no_listed_items <lgl>, fridge <lgl>,
-#   electricity <lgl>, sofa_set <lgl>, lorry <lgl>, sterio <lgl>,
-#   computer <lgl>, car <lgl>, Jan <lgl>, Sept <lgl>, Oct <lgl>, Nov <lgl>, …
+Error in `filter()`:
+! Problem while computing `..1 = !is.na(memb_assoc)`.
+Caused by error:
+! object 'memb_assoc' not found
 ~~~
-{: .output}
+{: .error}
 
 The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
 returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol
@@ -600,29 +515,11 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+Error in `group_by()`:
+! Must group by variables found in `.data`.
+✖ Column `memb_assoc` is not found.
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 3
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs
-  <chr>    <chr>               <dbl>
-1 Chirodzo NA                   5.08
-2 Chirodzo no                   8.06
-3 Chirodzo yes                  7.82
-4 God      NA                   6   
-5 God      no                   7.13
-6 God      yes                  8   
-7 Ruaca    NA                   6.22
-8 Ruaca    no                   7.18
-9 Ruaca    yes                  9.5 
-~~~
-{: .output}
+{: .error}
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 `ungroup` function:
@@ -639,28 +536,11 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+Error in `group_by()`:
+! Must group by variables found in `.data`.
+✖ Column `memb_assoc` is not found.
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 3
-  village  memb_assoc mean_no_membrs
-  <chr>    <chr>               <dbl>
-1 Chirodzo NA                   5.08
-2 Chirodzo no                   8.06
-3 Chirodzo yes                  7.82
-4 God      NA                   6   
-5 God      no                   7.13
-6 God      yes                  8   
-7 Ruaca    NA                   6.22
-8 Ruaca    no                   7.18
-9 Ruaca    yes                  9.5 
-~~~
-{: .output}
+{: .error}
 
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
@@ -679,29 +559,12 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+Error in `filter()`:
+! Problem while computing `..1 = !is.na(memb_assoc)`.
+Caused by error:
+! object 'memb_assoc' not found
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 3
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs
-  <chr>    <chr>               <dbl>
-1 Chirodzo NA                   5.08
-2 Chirodzo no                   8.06
-3 Chirodzo yes                  7.82
-4 God      NA                   6   
-5 God      no                   7.13
-6 God      yes                  8   
-7 Ruaca    NA                   6.22
-8 Ruaca    no                   7.18
-9 Ruaca    yes                  9.5 
-~~~
-{: .output}
+{: .error}
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
@@ -721,29 +584,12 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+Error in `filter()`:
+! Problem while computing `..1 = !is.na(memb_assoc)`.
+Caused by error:
+! object 'memb_assoc' not found
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 4
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs min_membrs
-  <chr>    <chr>               <dbl>      <dbl>
-1 Chirodzo NA                   5.08          2
-2 Chirodzo no                   8.06          4
-3 Chirodzo yes                  7.82          2
-4 God      NA                   6             3
-5 God      no                   7.13          3
-6 God      yes                  8             5
-7 Ruaca    NA                   6.22          3
-8 Ruaca    no                   7.18          2
-9 Ruaca    yes                  9.5           5
-~~~
-{: .output}
+{: .error}
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
 For instance, we can sort on `min_membrs` to put the group with the smallest
@@ -764,29 +610,12 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+Error in `filter()`:
+! Problem while computing `..1 = !is.na(memb_assoc)`.
+Caused by error:
+! object 'memb_assoc' not found
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 4
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs min_membrs
-  <chr>    <chr>               <dbl>      <dbl>
-1 Chirodzo NA                   5.08          2
-2 Chirodzo yes                  7.82          2
-3 Ruaca    no                   7.18          2
-4 God      NA                   6             3
-5 God      no                   7.13          3
-6 Ruaca    NA                   6.22          3
-7 Chirodzo no                   8.06          4
-8 God      yes                  8             5
-9 Ruaca    yes                  9.5           5
-~~~
-{: .output}
+{: .error}
 
 To sort in descending order, we need to add the `desc()` function. If we want to
 sort the results by decreasing order of minimum household size:
@@ -805,29 +634,12 @@ interviews %>%
 
 
 ~~~
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+Error in `filter()`:
+! Problem while computing `..1 = !is.na(memb_assoc)`.
+Caused by error:
+! object 'memb_assoc' not found
 ~~~
-{: .output}
-
-
-
-~~~
-# A tibble: 9 × 4
-# Groups:   village [3]
-  village  memb_assoc mean_no_membrs min_membrs
-  <chr>    <chr>               <dbl>      <dbl>
-1 God      yes                  8             5
-2 Ruaca    yes                  9.5           5
-3 Chirodzo no                   8.06          4
-4 God      NA                   6             3
-5 God      no                   7.13          3
-6 Ruaca    NA                   6.22          3
-7 Chirodzo NA                   5.08          2
-8 Chirodzo yes                  7.82          2
-9 Ruaca    no                   7.18          2
-~~~
-{: .output}
+{: .error}
 
 #### Counting
 
@@ -979,8 +791,8 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > `summarise()` has grouped output by 'year'. You can override using the `.groups`
-> > argument.
+> > `summarise()` has grouped output by 'year'. You can override using the
+> > `.groups` argument.
 > > ~~~
 > > {: .output}
 > > 
