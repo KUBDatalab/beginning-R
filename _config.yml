@@ -33,11 +33,13 @@ repository: <USERNAME>/<PROJECT>
 email: "kubdatalab@kb.dk"
 
 # Sites.
+# dc_site: "http://datacarpentry.org" ændret til https://kub.kb.dk/datalab
+# Det bør gøres mere elegant!
 amy_site: "https://amy.software-carpentry.org/workshops"
 carpentries_github: "https://github.com/carpentries"
 carpentries_pages: "https://carpentries.github.io"
 carpentries_site: "https://carpentries.org/"
-dc_site: "http://datacarpentry.org"
+dc_site: "https://kub.kb.dk/datalab"
 example_repo: "https://github.com/carpentries/lesson-example"
 example_site: "https://carpentries.github.io/lesson-example"
 lc_site: "https://librarycarpentry.github.io/"
