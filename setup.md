@@ -107,17 +107,8 @@ recommend if you have any problems installing R and RStudio on your personal com
 
 ### For all
 
-**After installing R and RStudio, you need to install the `tidyverse` package.**
+**Data used**
 
-* After starting RStudio, at the console type:
-  `install.packages("tidyverse")`
+https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv
 
-* For reference, the lesson uses `SAFI_clean.csv`. The direct download link for
-this file is: <https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv>. To download
-from `R`:
-
-`download.file("https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv", "SAFI_clean.csv", mode = "wb")`
-
-
-If you have chosen the online version at [Rstudio Cloud](https://rstudio.cloud/) you will have 
-to begin a new project (Click "New Project") before you can run the code above.
+You do not need to download the file. We will do that together during the course.
