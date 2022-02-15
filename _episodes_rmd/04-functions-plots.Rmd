@@ -56,19 +56,17 @@ of the x-axis and one containing the values for the y-axis. Here we use the
 $-notation:
 
 ```{r first-scatterplot}
-plot(interviews_plotting$years_liv, interviews_plotting$number_items)
+plot(interviews_plotting$no_membrs, interviews_plotting$no_meals)
 ```
-We are plotting the number of items owned vs. the number of years lived in the 
-village. A hypothesis could be, that the respondents accumulate more items 
-the longer they have lived in the village.
+
 
 Scatterplots are useful for showing that sort for relationships in the data.
 Here it does not appear that the correlation exists; there is no clear trend.
 
 We might want to adjust the labels on the axes, and add a main title:
 ```{r}
-plot(interviews_plotting$years_liv, interviews_plotting$number_items, 
-     main = "Relation between years lived in village and number of items owned",
+plot(interviews_plotting$no_membrs, interviews_plotting$no_meals, 
+     main = "Relation between number of members of households, and number of meals served",
      xlab = "Years lived",
      ylab = "Items owned")
 
@@ -76,14 +74,14 @@ plot(interviews_plotting$years_liv, interviews_plotting$number_items,
 
 
 ## Boxplots 
-We can use boxplots to visualize the distribution of rooms for each wall type:
+We can use boxplots to visualize the distribution of number of household members for each wall type:
 ```{r}
-boxplot(interviews_plotting$rooms~interviews_plotting$respondent_wall_type)
+boxplot(interviews_plotting$no_membrs~interviews_plotting$respondent_wall_type)
 ```
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
-y as a function of x. In this case we want to visualise the number of rooms, as 
+y as a function of x. In this case we want to visualise the number of people, as 
 af function of the wall type. 
 Secondly, we use a boxplot. A boxplots shows the distribution of the values on 
 the y-axis. The median value is indicated by the solid bar.
@@ -105,12 +103,12 @@ outliers are either very interesting, or something that we can ignore.
 
 Another useful plottype are histograms. 
 ```{r}
-hist(interviews_plotting$rooms)
+hist(interviews_plotting$no_membrs)
 ```
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
-nicely to the number of rooms, but they do not have to.
+nicely to the number of people, but they do not have to.
 
 
 
