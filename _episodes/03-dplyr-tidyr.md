@@ -163,7 +163,7 @@ commas:
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo", 
-                   rooms > 1, 
+                   no_membrs > 4, 
                    no_meals > 2)
 ~~~
 {: .language-r}
@@ -171,12 +171,31 @@ filter(interviews, village == "Chirodzo",
 
 
 ~~~
-Error in `filter()`:
-! Problem while computing `..2 = rooms > 1`.
-Caused by error:
-! object 'rooms' not found
+# A tibble: 20 × 6
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+ 2     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+ 3     35 Chirodzo 2016-11-17 00:00:00         5 muddaub                     3
+ 4     36 Chirodzo 2016-11-17 00:00:00         6 sunbricks                   3
+ 5     45 Chirodzo 2016-11-17 00:00:00         9 muddaub                     3
+ 6     48 Chirodzo 2016-11-16 00:00:00         7 muddaub                     3
+ 7     49 Chirodzo 2016-11-16 00:00:00         6 burntbricks                 3
+ 8     51 Chirodzo 2016-11-16 00:00:00         5 muddaub                     3
+ 9     52 Chirodzo 2016-11-16 00:00:00        11 burntbricks                 3
+10     56 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 3
+11     61 Chirodzo 2016-11-16 00:00:00        10 muddaub                     3
+12     62 Chirodzo 2016-11-16 00:00:00         5 muddaub                     3
+13     64 Chirodzo 2016-11-16 00:00:00         6 muddaub                     3
+14     65 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+15     66 Chirodzo 2016-11-16 00:00:00        10 burntbricks                 3
+16     67 Chirodzo 2016-11-16 00:00:00         5 burntbricks                 3
+17     68 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+18    192 Chirodzo 2017-06-03 00:00:00         9 burntbricks                 3
+19    199 Chirodzo 2017-06-04 00:00:00         7 burntbricks                 3
+20    200 Chirodzo 2017-06-04 00:00:00         8 burntbricks                 3
 ~~~
-{: .error}
+{: .output}
 
 We can also form "and" statements with the `&` operator instead of commas:
 
@@ -185,7 +204,7 @@ We can also form "and" statements with the `&` operator instead of commas:
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo" & 
-                   rooms > 1 & 
+                   no_membrs > 4 & 
                    no_meals > 2)
 ~~~
 {: .language-r}
@@ -193,13 +212,31 @@ filter(interviews, village == "Chirodzo" &
 
 
 ~~~
-Error in `filter()`:
-! Problem while computing `..1 = village == "Chirodzo" & rooms > 1 &
-  no_meals > 2`.
-Caused by error:
-! object 'rooms' not found
+# A tibble: 20 × 6
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+ 2     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+ 3     35 Chirodzo 2016-11-17 00:00:00         5 muddaub                     3
+ 4     36 Chirodzo 2016-11-17 00:00:00         6 sunbricks                   3
+ 5     45 Chirodzo 2016-11-17 00:00:00         9 muddaub                     3
+ 6     48 Chirodzo 2016-11-16 00:00:00         7 muddaub                     3
+ 7     49 Chirodzo 2016-11-16 00:00:00         6 burntbricks                 3
+ 8     51 Chirodzo 2016-11-16 00:00:00         5 muddaub                     3
+ 9     52 Chirodzo 2016-11-16 00:00:00        11 burntbricks                 3
+10     56 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 3
+11     61 Chirodzo 2016-11-16 00:00:00        10 muddaub                     3
+12     62 Chirodzo 2016-11-16 00:00:00         5 muddaub                     3
+13     64 Chirodzo 2016-11-16 00:00:00         6 muddaub                     3
+14     65 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+15     66 Chirodzo 2016-11-16 00:00:00        10 burntbricks                 3
+16     67 Chirodzo 2016-11-16 00:00:00         5 burntbricks                 3
+17     68 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+18    192 Chirodzo 2017-06-03 00:00:00         9 burntbricks                 3
+19    199 Chirodzo 2017-06-04 00:00:00         7 burntbricks                 3
+20    200 Chirodzo 2017-06-04 00:00:00         8 burntbricks                 3
 ~~~
-{: .error}
+{: .output}
 
 In an "or" statement, observations must meet *at least one* of the specified conditions. 
 To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
@@ -386,57 +423,39 @@ Frequently you'll want to create new columns based on the values in existing
 columns, for example to do unit conversions, or to find the ratio of values in
 two columns. For this we'll use `mutate()`.
 
-We might be interested in the ratio of number of household members
-to rooms used for sleeping (i.e. avg number of people per room):
+We might be interested in the number of meals served in a given household
+(i.e. number of people times the number of meals served):
 
 
 ~~~
 interviews %>%
-    mutate(people_per_room = no_membrs / rooms)
+    mutate(people_per_room = no_membrs * no_meals)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in `mutate()`:
-! Problem while computing `people_per_room = no_membrs/rooms`.
-Caused by error:
-! object 'rooms' not found
+# A tibble: 131 × 7
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      1 God      2016-11-17 00:00:00         3 muddaub                     2
+ 2      1 God      2016-11-17 00:00:00         7 muddaub                     2
+ 3      3 God      2016-11-17 00:00:00        10 burntbricks                 2
+ 4      4 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 5      5 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 6      6 God      2016-11-17 00:00:00         3 muddaub                     2
+ 7      7 God      2016-11-17 00:00:00         6 muddaub                     3
+ 8      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
+ 9      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+# … with 121 more rows, and 1 more variable: people_per_room <dbl>
 ~~~
-{: .error}
-
-We may be interested in investigating whether being a member of an
-irrigation association had any effect on the ratio of household members
-to rooms. To look at this relationship, we will first remove
-data from our dataset where the respondent didn't answer the
-question of whether they were a member of an irrigation association.
-These cases are recorded as "NULL" in the dataset.
-
-To remove these cases, we could insert a `filter()` in the chain:
-
-
-~~~
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    mutate(people_per_room = no_membrs / rooms)
-~~~
-{: .language-r}
+{: .output}
 
 
 
-~~~
-Error in `filter()`:
-! Problem while computing `..1 = !is.na(memb_assoc)`.
-Caused by error:
-! object 'memb_assoc' not found
-~~~
-{: .error}
 
-The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
-returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol
-negates this and says we only want values of `FALSE`, where `memb_assoc` **is
-not** missing.
 
 > ## Exercise
 >
@@ -507,7 +526,7 @@ You can also group by multiple columns:
 
 ~~~
 interviews %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ~~~
 {: .language-r}
@@ -515,11 +534,30 @@ interviews %>%
 
 
 ~~~
-Error in `group_by()`:
-! Must group by variables found in `.data`.
-✖ Column `memb_assoc` is not found.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 10 × 3
+# Groups:   village [3]
+   village  respondent_wall_type mean_no_membrs
+   <chr>    <chr>                         <dbl>
+ 1 Chirodzo burntbricks                    8.18
+ 2 Chirodzo muddaub                        5.62
+ 3 Chirodzo sunbricks                      6   
+ 4 God      burntbricks                    7.47
+ 5 God      muddaub                        5.47
+ 6 God      sunbricks                      7.89
+ 7 Ruaca    burntbricks                    7.73
+ 8 Ruaca    cement                         7   
+ 9 Ruaca    muddaub                        7   
+10 Ruaca    sunbricks                      8.29
+~~~
+{: .output}
 
 Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 `ungroup` function:
@@ -527,7 +565,7 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 ~~~
 interviews %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs)) %>%
     ungroup()
 ~~~
@@ -536,46 +574,41 @@ interviews %>%
 
 
 ~~~
-Error in `group_by()`:
-! Must group by variables found in `.data`.
-✖ Column `memb_assoc` is not found.
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
-{: .error}
-
-When grouping both by `village` and `membr_assoc`, we see rows in our table for
-respondents who did not specify whether they were a member of an irrigation
-association. We can exclude those data from our table using a filter step.
+{: .output}
 
 
 
 ~~~
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
-    summarize(mean_no_membrs = mean(no_membrs))
+# A tibble: 10 × 3
+   village  respondent_wall_type mean_no_membrs
+   <chr>    <chr>                         <dbl>
+ 1 Chirodzo burntbricks                    8.18
+ 2 Chirodzo muddaub                        5.62
+ 3 Chirodzo sunbricks                      6   
+ 4 God      burntbricks                    7.47
+ 5 God      muddaub                        5.47
+ 6 God      sunbricks                      7.89
+ 7 Ruaca    burntbricks                    7.73
+ 8 Ruaca    cement                         7   
+ 9 Ruaca    muddaub                        7   
+10 Ruaca    sunbricks                      8.29
 ~~~
-{: .language-r}
+{: .output}
 
 
-
-~~~
-Error in `filter()`:
-! Problem while computing `..1 = !is.na(memb_assoc)`.
-Caused by error:
-! object 'memb_assoc' not found
-~~~
-{: .error}
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
 column indicating the minimum household size for each village for each group
-(members of an irrigation association vs not):
+(type of wall):
 
 
 ~~~
 interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs))
 ~~~
@@ -584,12 +617,30 @@ interviews %>%
 
 
 ~~~
-Error in `filter()`:
-! Problem while computing `..1 = !is.na(memb_assoc)`.
-Caused by error:
-! object 'memb_assoc' not found
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 10 × 4
+# Groups:   village [3]
+   village  respondent_wall_type mean_no_membrs min_membrs
+   <chr>    <chr>                         <dbl>      <dbl>
+ 1 Chirodzo burntbricks                    8.18          3
+ 2 Chirodzo muddaub                        5.62          2
+ 3 Chirodzo sunbricks                      6             6
+ 4 God      burntbricks                    7.47          3
+ 5 God      muddaub                        5.47          3
+ 6 God      sunbricks                      7.89          4
+ 7 Ruaca    burntbricks                    7.73          3
+ 8 Ruaca    cement                         7             7
+ 9 Ruaca    muddaub                        7             2
+10 Ruaca    sunbricks                      8.29          4
+~~~
+{: .output}
 
 It is sometimes useful to rearrange the result of a query to inspect the values.
 For instance, we can sort on `min_membrs` to put the group with the smallest
@@ -599,8 +650,7 @@ household first:
 
 ~~~
 interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs)) %>%
     arrange(min_membrs)
@@ -610,12 +660,30 @@ interviews %>%
 
 
 ~~~
-Error in `filter()`:
-! Problem while computing `..1 = !is.na(memb_assoc)`.
-Caused by error:
-! object 'memb_assoc' not found
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 10 × 4
+# Groups:   village [3]
+   village  respondent_wall_type mean_no_membrs min_membrs
+   <chr>    <chr>                         <dbl>      <dbl>
+ 1 Chirodzo muddaub                        5.62          2
+ 2 Ruaca    muddaub                        7             2
+ 3 Chirodzo burntbricks                    8.18          3
+ 4 God      burntbricks                    7.47          3
+ 5 God      muddaub                        5.47          3
+ 6 Ruaca    burntbricks                    7.73          3
+ 7 God      sunbricks                      7.89          4
+ 8 Ruaca    sunbricks                      8.29          4
+ 9 Chirodzo sunbricks                      6             6
+10 Ruaca    cement                         7             7
+~~~
+{: .output}
 
 To sort in descending order, we need to add the `desc()` function. If we want to
 sort the results by decreasing order of minimum household size:
@@ -623,8 +691,7 @@ sort the results by decreasing order of minimum household size:
 
 ~~~
 interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs)) %>%
     arrange(desc(min_membrs))
@@ -634,12 +701,30 @@ interviews %>%
 
 
 ~~~
-Error in `filter()`:
-! Problem while computing `..1 = !is.na(memb_assoc)`.
-Caused by error:
-! object 'memb_assoc' not found
+`summarise()` has grouped output by 'village'. You can override using the
+`.groups` argument.
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+# A tibble: 10 × 4
+# Groups:   village [3]
+   village  respondent_wall_type mean_no_membrs min_membrs
+   <chr>    <chr>                         <dbl>      <dbl>
+ 1 Ruaca    cement                         7             7
+ 2 Chirodzo sunbricks                      6             6
+ 3 God      sunbricks                      7.89          4
+ 4 Ruaca    sunbricks                      8.29          4
+ 5 Chirodzo burntbricks                    8.18          3
+ 6 God      burntbricks                    7.47          3
+ 7 God      muddaub                        5.47          3
+ 8 Ruaca    burntbricks                    7.73          3
+ 9 Chirodzo muddaub                        5.62          2
+10 Ruaca    muddaub                        7             2
+~~~
+{: .output}
 
 #### Counting
 

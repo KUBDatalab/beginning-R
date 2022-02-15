@@ -76,63 +76,12 @@ $-notation:
 
 
 ~~~
-plot(interviews_plotting$years_liv, interviews_plotting$number_items)
+plot(interviews_plotting$no_membrs, interviews_plotting$no_meals)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Warning: Unknown or uninitialised column: `years_liv`.
-~~~
-{: .warning}
-
-
-
-~~~
-Warning: Unknown or uninitialised column: `number_items`.
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in min(x): no non-missing arguments to min; returning Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in max(x): no non-missing arguments to max; returning -Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in min(x): no non-missing arguments to min; returning Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in max(x): no non-missing arguments to max; returning -Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Error in plot.window(...): need finite 'xlim' values
-~~~
-{: .error}
-
 <img src="../fig/rmd-04-first-scatterplot-1.png" title="plot of chunk first-scatterplot" alt="plot of chunk first-scatterplot" width="612" style="display: block; margin: auto;" />
-We are plotting the number of items owned vs. the number of years lived in the 
-village. A hypothesis could be, that the respondents accumulate more items 
-the longer they have lived in the village.
+
 
 Scatterplots are useful for showing that sort for relationships in the data.
 Here it does not appear that the correlation exists; there is no clear trend.
@@ -140,90 +89,29 @@ Here it does not appear that the correlation exists; there is no clear trend.
 We might want to adjust the labels on the axes, and add a main title:
 
 ~~~
-plot(interviews_plotting$years_liv, interviews_plotting$number_items, 
-     main = "Relation between years lived in village and number of items owned",
+plot(interviews_plotting$no_membrs, interviews_plotting$no_meals, 
+     main = "Relation between number of members of households, and number of meals served",
      xlab = "Years lived",
      ylab = "Items owned")
 ~~~
 {: .language-r}
 
-
-
-~~~
-Warning: Unknown or uninitialised column: `years_liv`.
-~~~
-{: .warning}
-
-
-
-~~~
-Warning: Unknown or uninitialised column: `number_items`.
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in min(x): no non-missing arguments to min; returning Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in max(x): no non-missing arguments to max; returning -Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in min(x): no non-missing arguments to min; returning Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Warning in max(x): no non-missing arguments to max; returning -Inf
-~~~
-{: .warning}
-
-
-
-~~~
-Error in plot.window(...): need finite 'xlim' values
-~~~
-{: .error}
-
 <img src="../fig/rmd-04-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
-We can use boxplots to visualize the distribution of rooms for each wall type:
+We can use boxplots to visualize the distribution of number of household members for each wall type:
 
 ~~~
-boxplot(interviews_plotting$rooms~interviews_plotting$respondent_wall_type)
+boxplot(interviews_plotting$no_membrs~interviews_plotting$respondent_wall_type)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Warning: Unknown or uninitialised column: `rooms`.
-~~~
-{: .warning}
-
-
-
-~~~
-Error in stats::model.frame.default(formula = interviews_plotting$rooms ~ : invalid type (NULL) for variable 'interviews_plotting$rooms'
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
-y as a function of x. In this case we want to visualise the number of rooms, as 
+y as a function of x. In this case we want to visualise the number of people, as 
 af function of the wall type. 
 Secondly, we use a boxplot. A boxplots shows the distribution of the values on 
 the y-axis. The median value is indicated by the solid bar.
@@ -246,27 +134,15 @@ outliers are either very interesting, or something that we can ignore.
 Another useful plottype are histograms. 
 
 ~~~
-hist(interviews_plotting$rooms)
+hist(interviews_plotting$no_membrs)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Warning: Unknown or uninitialised column: `rooms`.
-~~~
-{: .warning}
-
-
-
-~~~
-Error in hist.default(interviews_plotting$rooms): 'x' must be numeric
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
-nicely to the number of rooms, but they do not have to.
+nicely to the number of people, but they do not have to.
 
 
 
@@ -439,7 +315,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 5.13984
+[1] 7.163708
 ~~~
 {: .output}
 More than double as fast!

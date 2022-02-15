@@ -144,7 +144,7 @@ commas:
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo", 
-                   rooms > 1, 
+                   no_membrs > 4, 
                    no_meals > 2)
 ```
 
@@ -154,7 +154,7 @@ We can also form "and" statements with the `&` operator instead of commas:
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo" & 
-                   rooms > 1 & 
+                   no_membrs > 4 & 
                    no_meals > 2)
 ```
 
@@ -262,33 +262,17 @@ Frequently you'll want to create new columns based on the values in existing
 columns, for example to do unit conversions, or to find the ratio of values in
 two columns. For this we'll use `mutate()`.
 
-We might be interested in the ratio of number of household members
-to rooms used for sleeping (i.e. avg number of people per room):
+We might be interested in the number of meals served in a given household
+(i.e. number of people times the number of meals served):
 
 ```{r, purl = FALSE}
 interviews %>%
-    mutate(people_per_room = no_membrs / rooms)
+    mutate(people_per_room = no_membrs * no_meals)
 ```
 
-We may be interested in investigating whether being a member of an
-irrigation association had any effect on the ratio of household members
-to rooms. To look at this relationship, we will first remove
-data from our dataset where the respondent didn't answer the
-question of whether they were a member of an irrigation association.
-These cases are recorded as "NULL" in the dataset.
 
-To remove these cases, we could insert a `filter()` in the chain:
 
-```{r, purl = FALSE}
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    mutate(people_per_room = no_membrs / rooms)
-```
 
-The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
-returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol
-negates this and says we only want values of `FALSE`, where `memb_assoc` **is
-not** missing.
 
 > ## Exercise
 >
@@ -342,7 +326,7 @@ You can also group by multiple columns:
 
 ```{r, purl = FALSE}
 interviews %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
@@ -351,32 +335,21 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 
 ```{r, purl = FALSE}
 interviews %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs)) %>%
     ungroup()
 ```
 
-When grouping both by `village` and `membr_assoc`, we see rows in our table for
-respondents who did not specify whether they were a member of an irrigation
-association. We can exclude those data from our table using a filter step.
 
-
-```{r, purl = FALSE}
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
-    summarize(mean_no_membrs = mean(no_membrs))
-```
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
 column indicating the minimum household size for each village for each group
-(members of an irrigation association vs not):
+(type of wall):
 
 ```{r, purl = FALSE}
 interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs))
 ```
@@ -388,8 +361,7 @@ household first:
 
 ```{r, purl = FALSE}
 interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs)) %>%
     arrange(min_membrs)
@@ -400,8 +372,7 @@ sort the results by decreasing order of minimum household size:
 
 ```{r, purl = FALSE}
 interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+    group_by(village, respondent_wall_type) %>%
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs)) %>%
     arrange(desc(min_membrs))
