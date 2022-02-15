@@ -315,7 +315,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 7.163708
+[1] 5.878464
 ~~~
 {: .output}
 More than double as fast!
@@ -356,7 +356,66 @@ the code within the curly braces, as long as i is smaller than or equal to 10.
 It is important to remember to increment the value of i - otherwise i will always
 be 1, and therefore always smaller than 10. And the loop will never stop.
 
+## ggplot
+
+The plotting functions in R produce nice clean plots without any fancy details.
+That is generally a good thing, we want to maximize the information per ink in our plots.
+
+However, we are limited in the types of plots we can make, and sometimes we just want a 
+bit more color.
+
+Enter ggplot2.
+
+ggplot2 is a package designed to work well with the packages we have already 
+encountered. It produces plots in a structured way, and comes with a lot of 
+extensions, that enables us to plot almost anything.
+
+The basic structure of ggplots are:
+
+~~~
+ggplot(data, mapping = aes(x=x, y=y)) +
+  geom_point()
+~~~
+{: .language-r}
+
+ggplot takes some data. Typically we will provide the data using the pipe: ` %>% `  
 
 
+~~~
+data %>% 
+  ggplot(mapping = aes(x=x, y=y)) +
+    geom_point()
+~~~
+{: .language-r}
+
+The `mapping` argument tells ggplot which variables in our data should be mapped 
+to the x- and y-axes in our plot.
+
+That in itself will not produce much of a plot. We need to tell ggplot which type
+of plot we want. 
+
+We do that by adding a `geom_` function. Here we have added `geom_point` which
+produces a scatter-plot. Other functions are more intuitively named. `geom_col`
+gives us a column-plot, `geom_histogram` a histogram etc.
+
+Let us try to make a histogram like we saw earlier:
+
+~~~
+interviews_plotting %>% 
+  ggplot(aes(x=no_membrs)) +
+  geom_histogram()
+~~~
+{: .language-r}
+
+
+
+~~~
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+~~~
+{: .output}
+
+<img src="../fig/rmd-04-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
+It looks different, and we get a warning about `binwidth`. geom_histogram automatically
+chooses 30 bins for us, and that is normally not the right number.
 
 {% include links.md %}
