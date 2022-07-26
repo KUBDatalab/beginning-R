@@ -47,8 +47,7 @@ SAFI (Studying African Farmer-Led Irrigation) is a study looking at farming
 and irrigation methods in Tanzania and Mozambique. The survey data
 was collected through interviews conducted between November 2016 and
 June 2017. For this lesson, we will be using a subset of the
-available data. For information about the full teaching dataset used
-in other lessons in this workshop, see the
+available data. For information about the full dataset, see the
 [dataset description](http://www.datacarpentry.org/socialsci-workshop/data/).
 
 We will be using a subset of the cleaned version of the dataset that
@@ -147,6 +146,7 @@ interviews
  9      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
 10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
 # … with 121 more rows
+# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -329,6 +329,7 @@ interviews[1]
  9      9
 10     10
 # … with 121 more rows
+# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -343,9 +344,9 @@ interviews[1:3, 7]
 
 
 ~~~
-Error in `stop_subscript()`:
-! Can't subset columns that don't exist.
-✖ Location 7 doesn't exist.
+Error in `interviews[1:3, 7]`:
+! Can't subset columns past the end.
+ℹ Location 7 doesn't exist.
 ℹ There are only 6 columns.
 ~~~
 {: .error}
@@ -404,6 +405,7 @@ interviews[, -1]          # The whole tibble, except the first column
  9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
 10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
 # … with 121 more rows
+# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
