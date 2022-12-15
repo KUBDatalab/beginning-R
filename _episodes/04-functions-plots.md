@@ -80,7 +80,7 @@ plot(interviews_plotting$no_membrs, interviews_plotting$no_meals)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-first-scatterplot-1.png" title="plot of chunk first-scatterplot" alt="plot of chunk first-scatterplot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-first-scatterplot-1.png" alt="plot of chunk first-scatterplot" width="612" style="display: block; margin: auto;" />
 
 
 Scatterplots are useful for showing that sort for relationships in the data.
@@ -96,7 +96,7 @@ plot(interviews_plotting$no_membrs, interviews_plotting$no_meals,
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2" width="612" style="display: block; margin: auto;" />
 
 
 ## Boxplots 
@@ -107,7 +107,7 @@ boxplot(interviews_plotting$no_membrs~interviews_plotting$respondent_wall_type)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3" width="612" style="display: block; margin: auto;" />
 Two new things happens here. First, we are using a new way of telling the 
 plot function what relationship we want to visualise. 
 The function notation y~x, tells the boxplot function that we want to visualise
@@ -138,7 +138,7 @@ hist(interviews_plotting$no_membrs)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4" width="612" style="display: block; margin: auto;" />
 
 Histograms counts the number of observations in our data, that lies between 
 two values. Here the "breaks" between the values on the x-axis corresponds
@@ -315,7 +315,7 @@ as.numeric(for_time)/as.numeric(vect_time)
 
 
 ~~~
-[1] 4.856797
+[1] 5.439252
 ~~~
 {: .output}
 More than double as fast!
@@ -414,7 +414,7 @@ interviews_plotting %>%
 ~~~
 {: .output}
 
-<img src="../fig/rmd-04-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-unnamed-chunk-14-1.png" alt="plot of chunk unnamed-chunk-14" width="612" style="display: block; margin: auto;" />
 It looks different, and we get a warning about `binwidth`. geom_histogram automatically
 chooses 30 bins for us, and that is normally not the right number.
 

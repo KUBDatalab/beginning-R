@@ -1,0 +1,86 @@
+#### Sådan laver du et nyt kursus baseret på denne skabelon ####
+
+Denne skabelon skulle gerne gøre det lidt lettere at oprette et nyt kursus.
+
+Skabelonen er baseret på Carpentries skabelonen, men rettet til, justeret, 
+udvidet og beskåret til vores behov. Eller i hvert fald til de behov som 
+Christian har kunne identificere.
+
+### Opret en ny kursushjemmeside ###
+29 enkle trin:
+1. Kopier linket til denne side: https://github.com/KUBDatalab/styles
+2. Gå til https://github.com/new/import
+3. Paste linket ind i "Your old repository's clone URL" feltet
+4. Vælg KUBDatalab som "Owner" i dropdown menuen
+5. Giv dit nye kursus et navn. Ingen mellemrum. Og det er også det navn der kommer til at styre adressen til kursushjemmesiden
+6. Hak af i Public
+7. Klik på "Begin import"
+8. Drik en lille kop kaffe - og vent på at siden sider "Importing complete". Følg linket
+9. Installer "Git" fra softwarecentret. Drik resten af kaffen
+10. Åben git-bash
+11. Kør kommandoen: git clone -b gh-pages https://github.com/KUBDatalab/XXXX.git hvor XXXX er navnet du valgte i punkt 5.
+12. Gå ind i kataloget hvortil siden blev klonet: "cd XXXX" hvor XXXX er navnet du valgte i punkt 5
+13. Kør kommandoen: git remote add template https://github.com/KUBDatalab/styles.git
+14. Kør kommandoen: git config --local remote.template.tagOpt --no-tags
+15. Kør kommandoen: git checkout gh-pages (ikke strengt nødvendigt, men bare for en sikkerheds skyld)
+16. Installer Anaconda (nyeste udgave) fra softwarecentret. Drik mere kaffe.
+17. I git bash vinduet, kør kommandoen: python bin/lesson_initialize.py
+18. I git bash vinduet, kør kommandoen: git add .
+19. I git bash vinduet, kør kommandoen: git commit -m "Initial commit"
+20. Gå til siden du oprettede i punkt 7: https://github.com/KUBDatalab/XXXX hvor XXXX er navnet du valgte i punkt 5.
+21. Klik på "Settings"
+22. Klik på "Acttions"
+23. Klik på "General"
+24. Vælg "Allow all actions and reusable workflows"
+25. Klik på "Save"
+26. Tilbage til git bash vinduet.
+27. Kør kommandoen: git push origin gh-pages
+28. Drik endnu en kop kaffe
+29. Du har nu en fin ny side på adressen: https://kubdatalab.github.io/XXXX/ hvor XXXX er navnet du valgt i punkt 5
+
+30. Du skal nu vælge om du vil lave siden i RMarkdown, eller "blot" Markdown.
+
+Hvis RMarkdwon:
+31. gå til linket fra pkt. 7, og klik på dropdown menuen hvor der står "gh-pages". Skriv "master", eller "main" (eller noget helt tredie) i feltet "Find or create branch". 
+32. Klik på "Create branch: xxxx" hvor xxxx er hvad du nu skrev i punkt 31.
+33. Gå til Settings
+34. Gå til "Branches"
+34. Skift "Default branch" fra "gh-pages" til xxxx fra punkt 32.
+35. Følg #### Hvordan redigerer jegden så? #### herunder. Vælg at forke fra xxxx branchen.
+
+Hvis Markdown
+31. Følg #### Hvordan redigerer jeg den så? #### herunder. Vælg at forke fra gh-pages branchen.
+
+
+#### Hvordan redigerer jeg den så? ####
+Fork siden til dit egen profil på github.
+Lav dine sider i mappen "_episodes". Der er en demoside. Nummerer dem fra 01-introduction via 02-something til hvor mange du nu skal lave.
+Husk at siderne skal skrives i markdown. Med mindre du er ved at lave et R-kursus. Så kan du skrive i R-markdown. Filerne skal så gemmes i mappen _episodes_rmd
+Commit siderne til dit eget repo
+Klik på pull requests
+Etc. Tag evt github kurset
+Der skal også rettes ting i "_config.yml" filen
+
+
+#### Styles skabelonen er blevet opdateret! hvad nu? ####
+1. Fork det repo der skal opdateres til din egen github side.
+2. Åben gitbash og klon siden:
+git clone -b main https://github.com/chrbknudsen/R-packages.git
+3. cd ind i mappen
+cd R-packages
+4. lav en ny branch
+git checkout -b update-styles
+5. pull den seneste udgave af styles ind i din branch
+git pull https://github.com/KUBDatalab/styles
+6. Nu kan det blive svært. Fix eventuelle merge conflicts. Det skal vi nok have en separat note om...
+7. Push ændringerne til den branch du lavede i punkt 4.
+git push -u origin update-styles
+8 Gå nu til din fork af siden, mere præcist den branch der lige blev lavet:
+https://github.com/chrbknudsen/R-packages/tree/update-styles
+9. Lav en pull request 
+10. Der vil nu blive kørt automatiske tjeks. Test template skal skippes, build-website skal gerne få et grønt tick-mark. Der skal også helst være et grønt tickmark "this branch has no conflicts with the bae branc.
+11- klik på "Merge pull request"
+12. Bum - kursussiden er opdateret med seneste rettelser til styles.
+
+Noget af det bør kunne automatiseres. Man kan lade sig inspirere her:
+https://github.com/carpentries-incubator/git-novice-branch-pr/blob/gh-pages/.github/workflows/update-styles.yml

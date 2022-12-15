@@ -148,7 +148,6 @@ filter(interviews, village == "Chirodzo")
  9     44 Chirodzo 2016-11-17 00:00:00         2 muddaub                     2
 10     45 Chirodzo 2016-11-17 00:00:00         9 muddaub                     3
 # … with 29 more rows
-# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -267,7 +266,6 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
  9     28 Ruaca    2016-11-21 00:00:00         2 muddaub                     3
 10     29 Ruaca    2016-11-21 00:00:00         7 burntbricks                 3
 # … with 78 more rows
-# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -337,7 +335,6 @@ interviews %>%
  9 Chirodzo 2016-11-17 00:00:00         2 muddaub             
 10 Chirodzo 2016-11-17 00:00:00         9 muddaub             
 # … with 29 more rows
-# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -385,7 +382,6 @@ interviews_ch
  9 Chirodzo 2016-11-17 00:00:00         2 muddaub             
 10 Chirodzo 2016-11-17 00:00:00         9 muddaub             
 # … with 29 more rows
-# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -455,7 +451,6 @@ interviews %>%
 10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks           3      36
 # … with 121 more rows, and abbreviated variable names ¹​respondent_wall_type,
 #   ²​no_meals, ³​people_per_room
-# ℹ Use `print(n = ...)` to see more rows
 ~~~
 {: .output}
 
@@ -849,6 +844,13 @@ interviews %>%
 > > library(lubridate) # load lubridate if not already loaded
 > > ~~~
 > > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Loading required package: timechange
+> > ~~~
+> > {: .output}
 > > 
 > > 
 > > 
