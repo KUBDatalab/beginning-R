@@ -7,7 +7,8 @@ import sys
 import os
 import re
 from datetime import date
-from util import Reporter, split_metadata, load_yaml, check_unwanted_files
+from util import split_metadata, load_yaml, check_unwanted_files
+from reporter import Reporter
 
 # Metadata field patterns.
 EMAIL_PATTERN = r'[^@]+@[^@]+\.[^@]+'
@@ -16,8 +17,8 @@ EVENTBRITE_PATTERN = r'\d{9,10}'
 URL_PATTERN = r'https?://.+'
 
 # Defaults.
-CARPENTRIES = ("dc", "swc", "lc", "cp")
-DEFAULT_CONTACT_EMAIL = 'team@carpentries.org'
+CARPENTRIES = ("dc", "swc", "lc", "cp", "kd")
+DEFAULT_CONTACT_EMAIL = 'kubdatalab@kb.dk'
 
 USAGE = 'Usage: "workshop_check.py path/to/root/directory"'
 
@@ -89,7 +90,7 @@ def check_layout(layout):
 
 @look_for_fixme
 def check_carpentry(layout):
-    '''"carpentry" in YAML header must be "dc", "swc", "lc", or "cp".'''
+    '''"carpentry" in YAML header must be "dc", "swc", "lc", "kd" or "cp".'''
 
     return layout in CARPENTRIES
 
@@ -388,7 +389,7 @@ def check_config(reporter, filename):
                    kind)
 
     carpentry = config.get('carpentry', None)
-    reporter.check(carpentry in ('swc', 'dc', 'lc', 'cp'),
+    reporter.check(carpentry in ('swc', 'dc', 'lc', 'kd', 'cp'),
                    filename,
                    'Missing or unknown carpentry: {0}',
                    carpentry)
