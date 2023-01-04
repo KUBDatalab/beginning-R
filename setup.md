@@ -112,3 +112,6 @@ recommend if you have any problems installing R and RStudio on your personal com
 https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv
 
 You do not need to download the file. We will do that together during the course.
+
+{% include links.md %}
+
