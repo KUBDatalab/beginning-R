@@ -18,19 +18,27 @@
       {% comment %} Select what logo to display. {% endcomment %}
       {% if site.carpentry == "swc" %}
       <a href="{{ site.swc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/kubdatalab-logo.png %}" alt="Software Carpentry logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/swc-icon-blue.svg %}" alt="Software Carpentry logo" />
       </a>
       {% elsif site.carpentry == "dc" %}
       <a href="{{ site.dc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/kubdatalab-logo.png %}" alt="Data Carpentry logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/dc-icon-black.svg %}" alt="Data Carpentry logo" />
       </a>
       {% elsif site.carpentry == "lc" %}
       <a href="{{ site.lc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/kubdatalab-logo.png %}" alt="Library Carpentry logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/lc-icon-black.svg %}" alt="Library Carpentry logo" />
       </a>
       {% elsif site.carpentry == "cp" %}
       <a href="{{ site.carpentries_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/kubdatalab-logo.png %}" alt="The Carpentries logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/cp-logo-blue.svg %}" alt="The Carpentries logo" />
+      </a>
+      {% elsif site.carpentry == "kd" %}
+      <a href="{{ site.carpentries_site }}" class="pull-left">
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/kd-logo.svg %}" alt="KUB DataLab ID" />
+      </a>
+      {% elsif site.carpentry == "lab" %}
+      <a href="{{ relative_root_path }}{% link index.md %}" class="pull-left">
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/carpentrieslab.svg %}" alt="The Carpentries Lab" />
       </a>
       {% endif %}
 
@@ -80,7 +88,9 @@
             {% else %}
               {% assign extra = lesson_extra %}
             {% endif %}
-            <li><a href="{{ relative_root_path }}{{ extra.url }}">{{ extra.title }}</a></li>
+            {% unless extra.exclude %}
+              <li><a href="{{ relative_root_path }}{{ extra.url }}">{{ extra.title }}</a></li>
+            {% endunless %}
             {% endfor %}
           </ul>
         </li>
