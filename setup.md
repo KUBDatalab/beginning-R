@@ -5,6 +5,14 @@ title: Setup
 
 ## Setup instructions
 
+> ## Where to install?
+>
+> Please do NOT install R and RStudio on Onedrive or other clouddrives.
+> R will work but you will not be able to install the extensions to R
+> that you will need in this course!
+>
+{: .caution}
+
 **R** and **RStudio** are separate downloads and installations. R is the
 underlying statistical computing environment, but using R alone is no
 fun. RStudio is a graphical integrated development environment (IDE) that makes
@@ -112,3 +120,6 @@ recommend if you have any problems installing R and RStudio on your personal com
 https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv
 
 You do not need to download the file. We will do that together during the course.
+
+{% include links.md %}
+

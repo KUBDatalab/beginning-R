@@ -409,8 +409,8 @@ expression.
 > > 
 > > ~~~
 > > Error in `filter()`:
-> > ! Problem while computing `..1 = memb_assoc == "yes"`.
-> > Caused by error in `mask$eval_all_filter()`:
+> > ℹ In argument: `memb_assoc == "yes"`.
+> > Caused by error:
 > > ! object 'memb_assoc' not found
 > > ~~~
 > > {: .error}
@@ -844,13 +844,6 @@ interviews %>%
 > > library(lubridate) # load lubridate if not already loaded
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Loading required package: timechange
-> > ~~~
-> > {: .output}
 > > 
 > > 
 > > 
