@@ -5,75 +5,75 @@ title: "Instructor Notes"
 
 ## Dataset
 
-The data used for this lesson are in the figshare repository at: <https://figshare.com/articles/SAFI_Survey_Results/6262019>.
+De oprindelige data kan findes her:
+<https://figshare.com/articles/SAFI_Survey_Results/6262019>.
 
-This lesson uses `SAFI_clean.csv`. The direct download link for this file is:
-<https://ndownloader.figshare.com/files/11492171>.
+Vi bruger en meget neddroslet udgave af data, der kan downloades her:
+<https://raw.githubusercontent.com/KUBDatalab/beginning-R/main/data/SAFI_clean.csv>.
 
-When time comes in the lesson to use this file, we recommend that the
-instructors place the `download.file()` command in the Etherpad, and that the
-learners copy and paste it in their scripts to download the file directly from
-figshare in their working directory. If the learners haven't created the
-`data/` directory and/or are not in the correct working directory, the
-`download.file()` command will produce an error. Therefore, it is important to use
-the stickies at this point.
+Vær sikker på at de studerende faktisk får downloaded data til rette mappe
+under introduktionen til R og RStudio. Vær særligt opmærksom på at visse
+styresystemer er case-sensitive, og læg vægt på at de skal downloade til
+"data"-mappen og ikke "Data".
 
-## RStudio and Multiple R Installs
+Har de ikke oprettet en `data` mappe vil `download.file()` give en fejl. Det er 
+særligt vigtigt at de har styr på det!
 
-Some learners may have previous R installations. On Mac, if a new install is
-performed, the learner's system will create a symbolic link, pointing to the new
-install as 'Current.' Sometimes this process does not occur, and, even though a
-new R is installed and can be accessed via the R console, RStudio does not find
-it. The net result of this is that the learner's RStudio will be running an
-older R install. This will cause package installations to fail. This can be
-fixed at the terminal. First, check for the appropriate R installation in the
-library:
+## RStudio og flere R installationer
+
+Nogle studerende kan have flere R instalationer. På Macs vil en ny installation
+føre til at styresystemet skaber et symbolsk link der peger på den nye installation
+som 'Current'. Undertiden går det galt, og selvom den nye R-installation kan tilgås,
+kan RStudio ikke finde den. 
+Det kan føre til at den studerende kører på en ældre R-installation, og få 
+installation af pakker til at fejl. Det kan løses på terminalen.
+
+Start med at tjekke at den rette R-installation:
 
 ```
 ls -l /Library/Frameworks/R.framework/Versions/
 ```
 
-We are currently using R >=3.2. If it isn't there, they will need to install it.
-If it is present, you will need to set the symbolic link to Current to point to
-the R >=3.2 directory:
+Pt bruger vi R >=4.2. Hvis den ikke er der, skal den installeres.
+Hvis den er - skal det symbolske link sættes til Current sættes til at pege på 
+R >=4.2 kataloget:
 
 ```
-ln -s /Library/Frameworks/R.framework/Versions/3.x.y /Library/Frameworks/R.framework/Version/Current
+ln -s /Library/Frameworks/R.framework/Versions/4.x.y /Library/Frameworks/R.framework/Version/Current
 ```
+Genstart herefter RStudio.
 
-Then restart RStudio.
 
 ## Narrative
 
 ### Before we start
 
-* The main goal here is to help the learners be comfortable with the RStudio
-  interface. We use RStudio because it helps make using R more organized and
-  user friendly.
-* Go very slowly in the "Getting setup" section. Make sure everyone is following
-  along (remind learners to use the stickies). Plan with the helpers at this
-  point to go around the room, and be available to help. It's important to make
-  sure that learners are in the correct working directory, and that they create
-  a `data` (all lowercase) subfolder.
+* Det primære formål er at introducere de studerende til RStudios interface. 
+  Vi bruger RStudio fordi det gør brugen af R mere organiseret - og om ikke
+  bruger_venlig_ så bruger_venligere_.
+* Gå langsomt frem her. Alle skal følge med, så mappestrukturen, installation
+  af `tidyverse` og download af data er på plads for alle.
+* Vi bruger projekter her. Det løser problemet med working directory. Erfaringen
+  viser at mange studerende ikke fanger at de skal oprette et projekt. Sørg for 
+  at de alle får det på plads.
 
-### Intro to R
 
-* Why use assignment arrows (<-) over equal signs? 
-Historically, the assignment arrow dates back to S. In S, the <- was inspired by
-APL, which had a key for <-. At that time, <- was used for variable assignment,
-because == didn't exist for equality comparisons. Instead, equality was tested
-with =. So, you needed a different variable for assignment.
+### Introduction to R
 
-Fast forward to today, there really are only a few mechanical reasons why <- is
-preferred over =. Assignment ranks higher in operator precedence than =.
-If you wish to perform variable assignment inside a function, <- is the only
-option.
-* When going over the section on assignments, make sure to pause for at least 30
-  seconds when asking "What do you think is the current content of the object
-  `area_acres`? 123.5 or 6.175?". For learners with no programming experience,
-  this is a new and important concept.
-* Given that the concept of missing data is an important feature of the R
-  language, it is worth spending enough time on it.
+* Hvorfor bruger vi assignment operatoren (<-) og ikke lighedstegn?
+  Konceptet stammer tilbage fra programmeringssproget S, som R bygger på. 
+  i S er <- inspireret fra programmeringssproget APL, der kom med eget tastatur; 
+  hvor <- eksisterede. Fordi == ikke eksisterede som logisk test (man brugte =),
+  blev <- brugt til at assigne varible. 
+  Der er ikke mange rigtig gode årsager til at bruge <- i stedet for = i dag. 
+  Assignment er højere i operator hierarkiet end =. Men hvis du skal assigne
+  værdier til variable inde i funktioner, er <- den eneste mulighed. 
+  Det fører også til at koden bliver lettere at læse. Bruger vi konsekvent <- til
+  assignment, er det tydeligt at det er det vi gør. Det betyder at vi kan være
+  sikre på at når = optræder, er det fordi et argument sættes.
+* Når du når til spørgsmålet om hvad `area_acres` mon er, så giv den lidt tid til
+  at tænke. Det er et vigtigt, og for nye programmører ukendt koncept.
+* Husk at bruge lidt tid på manglende data. Det er et vigtigt koncept i dataanalyse.
 
 ### Starting with data
 
