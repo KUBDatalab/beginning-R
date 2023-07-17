@@ -116,10 +116,16 @@ freely available to extend R's native capabilities.
 <figure>
 <div class="row">
 <div class="col-md-6">
-<img src="../fig/r-manual.jpeg" alt="RStudio extends what R can do, and makes it easier to write R code and interact with R." width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="../fig/r-manual.jpeg" alt="RStudio extends what R can do, and makes it easier to write R code and interact with R." width="100%" />
+<p class="caption">plot of chunk rstudio-analogy</p>
+</div>
 </div>
 <div class="col-md-6">
-<img src="../fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of RStudio" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="../fig/r-automatic.jpeg" alt="automatic car gear shift representing the ease of RStudio" width="100%" />
+<p class="caption">plot of chunk rstudio-analogy-2</p>
+</div>
 </div>
 </div>
 <figcaption>

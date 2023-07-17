@@ -145,7 +145,7 @@ interviews
  8      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
  9      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
 10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
-# … with 121 more rows
+# ℹ 121 more rows
 ~~~
 {: .output}
 
@@ -327,7 +327,7 @@ interviews[1]
  8      8
  9      9
 10     10
-# … with 121 more rows
+# ℹ 121 more rows
 ~~~
 {: .output}
 
@@ -402,7 +402,7 @@ interviews[, -1]          # The whole tibble, except the first column
  8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
  9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
 10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
-# … with 121 more rows
+# ℹ 121 more rows
 ~~~
 {: .output}
 

@@ -147,7 +147,7 @@ filter(interviews, village == "Chirodzo")
  8     43 Chirodzo 2016-11-17 00:00:00         7 muddaub                     2
  9     44 Chirodzo 2016-11-17 00:00:00         2 muddaub                     2
 10     45 Chirodzo 2016-11-17 00:00:00         9 muddaub                     3
-# … with 29 more rows
+# ℹ 29 more rows
 ~~~
 {: .output}
 
@@ -265,7 +265,7 @@ filter(interviews, village == "Chirodzo" | village == "Ruaca")
  8     27 Ruaca    2016-11-21 00:00:00         7 burntbricks                 3
  9     28 Ruaca    2016-11-21 00:00:00         2 muddaub                     3
 10     29 Ruaca    2016-11-21 00:00:00         7 burntbricks                 3
-# … with 78 more rows
+# ℹ 78 more rows
 ~~~
 {: .output}
 
@@ -334,7 +334,7 @@ interviews %>%
  8 Chirodzo 2016-11-17 00:00:00         7 muddaub             
  9 Chirodzo 2016-11-17 00:00:00         2 muddaub             
 10 Chirodzo 2016-11-17 00:00:00         9 muddaub             
-# … with 29 more rows
+# ℹ 29 more rows
 ~~~
 {: .output}
 
@@ -381,7 +381,7 @@ interviews_ch
  8 Chirodzo 2016-11-17 00:00:00         7 muddaub             
  9 Chirodzo 2016-11-17 00:00:00         2 muddaub             
 10 Chirodzo 2016-11-17 00:00:00         9 muddaub             
-# … with 29 more rows
+# ℹ 29 more rows
 ~~~
 {: .output}
 
@@ -437,20 +437,20 @@ interviews %>%
 
 ~~~
 # A tibble: 131 × 7
-   key_ID village  interview_date      no_membrs respondent_wa…¹ no_me…² peopl…³
-    <dbl> <chr>    <dttm>                  <dbl> <chr>             <dbl>   <dbl>
- 1      1 God      2016-11-17 00:00:00         3 muddaub               2       6
- 2      1 God      2016-11-17 00:00:00         7 muddaub               2      14
- 3      3 God      2016-11-17 00:00:00        10 burntbricks           2      20
- 4      4 God      2016-11-17 00:00:00         7 burntbricks           2      14
- 5      5 God      2016-11-17 00:00:00         7 burntbricks           2      14
- 6      6 God      2016-11-17 00:00:00         3 muddaub               2       6
- 7      7 God      2016-11-17 00:00:00         6 muddaub               3      18
- 8      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks           2      24
- 9      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks           3      24
-10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks           3      36
-# … with 121 more rows, and abbreviated variable names ¹​respondent_wall_type,
-#   ²​no_meals, ³​people_per_room
+   key_ID village  interview_date      no_membrs respondent_wall_type no_meals
+    <dbl> <chr>    <dttm>                  <dbl> <chr>                   <dbl>
+ 1      1 God      2016-11-17 00:00:00         3 muddaub                     2
+ 2      1 God      2016-11-17 00:00:00         7 muddaub                     2
+ 3      3 God      2016-11-17 00:00:00        10 burntbricks                 2
+ 4      4 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 5      5 God      2016-11-17 00:00:00         7 burntbricks                 2
+ 6      6 God      2016-11-17 00:00:00         3 muddaub                     2
+ 7      7 God      2016-11-17 00:00:00         6 muddaub                     3
+ 8      8 Chirodzo 2016-11-16 00:00:00        12 burntbricks                 2
+ 9      9 Chirodzo 2016-11-16 00:00:00         8 burntbricks                 3
+10     10 Chirodzo 2016-12-16 00:00:00        12 burntbricks                 3
+# ℹ 121 more rows
+# ℹ 1 more variable: people_per_room <dbl>
 ~~~
 {: .output}
 
